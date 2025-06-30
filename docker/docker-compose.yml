@@ -1,0 +1,75 @@
+version: '3'
+
+services:
+  nginx:
+    container_name: nginx
+    restart: always
+    image: nginx:alpine
+    volumes:
+      - ${SOURCE_CODE_PATH_HOST}:${SOURCE_CODE_PATH_CONTAINER}
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+      - ./nginx/certs:/etc/nginx/certs
+      - ./nginx/logs:/var/log/nginx
+    ports:
+      - ${NGINX_PORT}:80
+      - 443:443
+    depends_on:
+      - app
+  app:
+    container_name: app
+    restart: always
+    build:
+      context: ./php-fpm
+      args:
+        - tag=${PHP_VERSION}
+        - SOURCE_CODE_PATH_CONTAINER=${SOURCE_CODE_PATH_CONTAINER}
+    volumes:
+      - ${SOURCE_CODE_PATH_HOST}:${SOURCE_CODE_PATH_CONTAINER}
+      - ./php-fpm/local.ini:/usr/local/etc/php/conf.d/local.ini
+    working_dir: ${SOURCE_CODE_PATH_CONTAINER}
+    links:
+      - mysql
+  mysql:
+    container_name: mysql
+    image: mysql:${DB_VERSION}
+    restart: always
+    command:
+      - --default-authentication-plugin=mysql_native_password
+      - --max_allowed_packet=32505856
+    ports:
+      - ${MYSQL_PORT}:3306
+    volumes:
+      - ${DATA_PATH_HOST}/mysql:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DB_NAME}
+      MYSQL_USER: ${MYSQL_USERNAME}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_ROOT_HOST: '%'
+  adminer:
+    container_name: adminer
+    image: adminer:latest
+    restart: always
+    ports:
+      - ${ADMINER_PORT}:8080
+  redis:
+    container_name: redis
+    image: redis:latest
+    restart: always
+    volumes:
+      - ${DATA_PATH_HOST}/redis:/data
+  node:
+    container_name: node
+    build:
+      context: ./node
+      args:
+        - NODE_VERSION=${NODE_VERSION}
+        - SOURCE_CODE_PATH_CONTAINER=${SOURCE_CODE_PATH_CONTAINER}
+    restart: always
+    volumes:
+      - ${SOURCE_CODE_PATH_HOST}:${SOURCE_CODE_PATH_CONTAINER}
+    ports:
+      - ${NODE_PORT}:6001
+    tty: true
+    depends_on:
+      - app
