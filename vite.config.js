@@ -7,6 +7,7 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/css/app.css',
+                'resources/sass/app.scss',
                 'resources/js/app.js',
                 'resources/themes/jisedai/jiken-web_202404/style.css',
                 'resources/themes/jisedai/jiken-web_202404/common/js/modernizr.js',
