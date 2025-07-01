@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Backend\HomeController as BackendHomeController;
 use App\Http\Controllers\Backend\PostController as BackendPostController;
+use App\Http\Controllers\Backend\CategoryController as BackendCategoryController;
 
 Route::group([
     'domain' => parse_url(config('app.url'), PHP_URL_HOST),
@@ -20,8 +21,9 @@ Route::group([
     'domain' => parse_url(config('app.url'), PHP_URL_HOST),
     'middleware' => ['web'],
     'as' => 'backend.',
-    'prefix' => 'backend',
+    'prefix' => 'admin',
 ], function () {
     Route::get('/', [BackendHomeController::class, 'index'])->name('home');
-    Route::get('/posts', [BackendPostController::class, 'index'])->name('posts.index');
+    Route::resource('posts', BackendPostController::class);
+    Route::resource('categories', BackendCategoryController::class);
 });
