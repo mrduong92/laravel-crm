@@ -8,12 +8,17 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.js',
-                'themes/jisedai/jiken-web_202404/style.css',
-                'themes/jisedai/jiken-web_202404/common/js/modernizr.js',
+                'resources/themes/jisedai/jiken-web_202404/style.css',
+                'resources/themes/jisedai/jiken-web_202404/common/js/modernizr.js',
                 'resources/themes/jisedai/css/custom.css',
             ],
             refresh: true,
         }),
         tailwindcss(),
     ],
+    server: {
+        hmr: {
+            host: 'localhost',
+        },
+    },
 });

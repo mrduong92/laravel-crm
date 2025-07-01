@@ -8,7 +8,7 @@ Version: 1.2.2
 
 /*
   HTML5 Reset :: style.css
-  
+
 -------------------------------------------------------------------------------*/
 html,
 body,
@@ -259,7 +259,7 @@ button {
 .clearfix {
   zoom: 1;
 }
-/* 
+/*
 reset.css add 201001
 -------------------------------------------------------------------------------*/
 body {
@@ -419,7 +419,7 @@ ul.decimal li {
 #l-Title {
   position: relative;
   border-bottom: 12px solid #f2f2f4;
-  background: url("../../uploads/ttl-bg-scaled.jpg") no-repeat;
+  background: url("../uploads/ttl-bg-scaled.jpg") no-repeat;
   background-position: top;
   background-size: cover;
 }
@@ -630,7 +630,7 @@ ul.decimal li {
   font-size: 1.2rem;
 }
 
-/* Scroll Top 
+/* Scroll Top
 ------------------------------------------------------------*/
 #j-page-top {
   z-index: 99;
@@ -769,7 +769,7 @@ ul.decimal li {
   background-color: #fff !important;
 }
 
-/* icon 
+/* icon
 ------------------------------------------------------------*/
 .icon-exLink {
   display: inline-block;
@@ -824,7 +824,7 @@ a:hover .icon-exLink::after {
 .c-FooterMenu a:hover .icon-exLink::after {
   border-color: #005bac;
 }
-/* Compornent 
+/* Compornent
 ------------------------------------------------------------*/
 .c-Section__inner {
   width: min(960px, 100%);
@@ -1361,7 +1361,7 @@ a:hover .icon-exLink::after {
 .c-SingleBlogFollow p {
   margin-bottom: 12px;
 }
-/* Blog List & Detail 
+/* Blog List & Detail
 ------------------------------------------------------------*/
 .v-Blog .c-BlogList {
   margin-bottom: 0;
@@ -1676,7 +1676,7 @@ a:hover .icon-exLink::after {
   padding: 1em 0 1em 1em;
 }
 
-/* Top 
+/* Top
 ------------------------------------------------------------*/
 @keyframes fadein-left {
   0% {
@@ -1713,7 +1713,7 @@ a:hover .icon-exLink::after {
 .v-MainV {
   width: 100%;
   height: 600px;
-  background: url("../../uploads/top-mv-scaled.jpg") no-repeat;
+  background: url("../uploads/top-mv-scaled.jpg") no-repeat;
   background-position: top center;
   background-size: cover;
 }
@@ -1857,7 +1857,7 @@ a:hover .icon-exLink::after {
   text-align: center;
 }
 
-/* INTERNSHIP 
+/* INTERNSHIP
 ------------------------------------------------------------*/
 .v-Intern--w {
   background: #fff;
@@ -1873,7 +1873,7 @@ a:hover .icon-exLink::after {
   content: "";
   width: 53%;
   height: 380px;
-  background-image: url(../../uploads/intern-special01.jpg);
+  background-image: url(../uploads/intern-special01.jpg);
   background-size: cover;
   background-position: top right;
   background-repeat: no-repeat;
@@ -1988,7 +1988,7 @@ a:hover .icon-exLink::after {
   display: block;
   width: 100%;
   height: 100%;
-  background-image: url(../../uploads/intern-bg.jpg);
+  background-image: url(../uploads/intern-bg.jpg);
   background-position: left bottom;
   background-size: cover;
   background-repeat: repeat;
@@ -2028,7 +2028,7 @@ a:hover .icon-exLink::after {
 .v-InternHero__inner {
   position: relative;
   width: 100%;
-  background-image: url(../../uploads/intern-mv.png);
+  background-image: url(../uploads/intern-mv.png);
   background-position: right bottom;
   background-size: 44%;
   background-repeat: no-repeat;
@@ -2209,7 +2209,7 @@ a:hover .icon-exLink::after {
   content: "";
   width: 142px;
   height: 146px;
-  background-image: url(../../uploads/intern-fig-talk.png);
+  background-image: url(../uploads/intern-fig-talk.png);
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
@@ -2221,7 +2221,7 @@ a:hover .icon-exLink::after {
   content: "";
   width: 180px;
   height: 250px;
-  background-image: url(../../uploads/intern-fig-talk02.png);
+  background-image: url(../uploads/intern-fig-talk02.png);
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
@@ -2337,7 +2337,7 @@ a:hover .icon-exLink::after {
   margin-top: 32px;
 }
 .v-AboutArea {
-  background-image: url(../../uploads/about-background.png);
+  background-image: url(../uploads/about-background.png);
   background-repeat: no-repeat;
   background-position: bottom right;
   padding-bottom: 56px;
@@ -2967,7 +2967,7 @@ a:hover .icon-exLink::after {
   border-top: 1px solid #eaeaea;
   border-bottom: 1px solid #eaeaea;
   background-color: #fff;
-  background-image: url("../../uploads/bg-grid.gif");
+  background-image: url("../uploads/bg-grid.gif");
   background-repeat: repeat;
 }
 
@@ -4334,7 +4334,7 @@ a:hover .v-Interview__external .icon-exLink::after {
 
 .v-Aiken .v-AikenSec01 {
   background-color: rgba(255, 255, 255, 0.4);
-  background-image: url("../../uploads/bk-ailp.jpg");
+  background-image: url("../uploads/bk-ailp.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -4386,7 +4386,7 @@ a:hover .v-Interview__external .icon-exLink::after {
 
 .v-AikenMv__img {
   min-height: 380px;
-  background: url("../../uploads/img-ailp-mv-2502.jpg") no-repeat
+  background: url("../uploads/img-ailp-mv-2502.jpg") no-repeat
     center;
 }
 
@@ -5132,7 +5132,7 @@ a:hover .v-Interview__external .icon-exLink::after {
   max-width: 90%;
   content: "";
   aspect-ratio: 1420 / 520;
-  background-image: url("../../uploads/jiken-mv-scaled.jpg");
+  background-image: url("../uploads/jiken-mv-scaled.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -5144,7 +5144,7 @@ a:hover .v-Interview__external .icon-exLink::after {
   content: "";
   width: 200px;
   height: 64px;
-  background-image: url("../../uploads/jiken-bg-dots.png");
+  background-image: url("../uploads/jiken-bg-dots.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 420px;
@@ -5157,7 +5157,7 @@ a:hover .v-Interview__external .icon-exLink::after {
   content: "";
   width: 260px;
   height: 420px;
-  background-image: url("../../uploads/jiken-bg-dots.png");
+  background-image: url("../uploads/jiken-bg-dots.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 420px;
@@ -5179,7 +5179,7 @@ a:hover .v-Interview__external .icon-exLink::after {
   content: "";
   width: 300px;
   height: 240px;
-  background-image: url(../../uploads/jiken-bg-dots.png);
+  background-image: url(../uploads/jiken-bg-dots.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 420px;
@@ -5454,7 +5454,7 @@ a:hover .v-Interview__external .icon-exLink::after {
   content: "";
   width: 560px;
   height: 300px;
-  background-image: url(../../uploads/jiken-bg-dots.png);
+  background-image: url(../uploads/jiken-bg-dots.png);
   background-repeat: repeat;
   background-position: center;
   background-size: 420px;
@@ -5562,7 +5562,7 @@ a:hover .v-Interview__external .icon-exLink::after {
     margin-top: 12px;
   }
   .v-JikenMv__img {
-    background-image: url("../../uploads/jiken-mv-sp.jpg");
+    background-image: url("../uploads/jiken-mv-sp.jpg");
     aspect-ratio: 40 / 48;
   }
   .v-JikenRecruit::before {
@@ -5584,7 +5584,7 @@ a:hover .v-Interview__external .icon-exLink::after {
   #l-Title {
     position: relative;
     border-bottom: 8px solid #f2f2f4;
-    background: url("../../uploads/sp-ttl-bg.jpg") no-repeat;
+    background: url("../uploads/sp-ttl-bg.jpg") no-repeat;
     background-position: top;
     background-size: cover;
   }
@@ -5806,7 +5806,7 @@ a:hover .v-Interview__external .icon-exLink::after {
     font-size: 1.2rem;
   }
 
-  /* Scroll Top 
+  /* Scroll Top
 ------------------------------------------------------------*/
   #j-page-top {
     z-index: 99;
@@ -5918,7 +5918,7 @@ a:hover .v-Interview__external .icon-exLink::after {
     background-color: #fff !important;
   }
 
-  /* icon 
+  /* icon
 ------------------------------------------------------------*/
   .icon-exLink {
     display: inline-block;
@@ -5957,7 +5957,7 @@ a:hover .v-Interview__external .icon-exLink::after {
     border-color: #5a5858;
   }
 
-  /* Compornent 
+  /* Compornent
 ------------------------------------------------------------*/
   .c-Section__inner {
     width: 100%;
@@ -6404,7 +6404,7 @@ a:hover .v-Interview__external .icon-exLink::after {
     margin-bottom: 12px;
   }
 
-  /* Blog List & Detail 
+  /* Blog List & Detail
 ------------------------------------------------------------*/
   .v-Blog .c-BlogList {
     row-gap: 0;
@@ -6565,7 +6565,7 @@ a:hover .v-Interview__external .icon-exLink::after {
     border-bottom: 0;
   }
 
-  /* Top 
+  /* Top
 ------------------------------------------------------------*/
 
   .v-Top {
@@ -6577,7 +6577,7 @@ a:hover .v-Interview__external .icon-exLink::after {
     width: 100%;
     background-size: cover;
     height: auto;
-    background: url(../../uploads/sp-top-mv.jpg) no-repeat;
+    background: url(../uploads/sp-top-mv.jpg) no-repeat;
     background-size: cover;
   }
 
@@ -6706,13 +6706,13 @@ a:hover .v-Interview__external .icon-exLink::after {
     margin-top: 12px;
   }
 
-  /* INTERNSHIP 
+  /* INTERNSHIP
 ------------------------------------------------------------*/
   .v-Intern--img::after {
     content: "";
     width: 100%;
     height: 200px;
-    background-image: url(../../uploads/intern-mv.png);
+    background-image: url(../uploads/intern-mv.png);
     background-size: 120%;
     background-position: top -30px right;
     background-repeat: no-repeat;
@@ -7121,7 +7121,7 @@ a:hover .v-Interview__external .icon-exLink::after {
     margin-top: 16px;
   }
   .v-AboutArea {
-    background-image: url(../../uploads/about-background.png);
+    background-image: url(../uploads/about-background.png);
     background-repeat: no-repeat;
     background-position: bottom right;
     background-size: 320px;
@@ -9274,7 +9274,7 @@ a:hover .v-Interview__external .icon-exLink::after {
   }
   .v-JikenMv__img {
     aspect-ratio: 40 / 48;
-    background-image: url("../../uploads/jiken-mv-sp.jpg");
+    background-image: url("../uploads/jiken-mv-sp.jpg");
     background-position: top left;
     background-size: 100%;
   }

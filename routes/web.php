@@ -4,10 +4,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\HomeController;
 
-Auth::routes();
+// Auth::routes();
 
 Route::group([
-    'domain' => config('app.url'),
+    'domain' => parse_url(config('app.url'), PHP_URL_HOST),
     'middleware' => ['web'],
     'as' => 'frontend.',
 ], function () {

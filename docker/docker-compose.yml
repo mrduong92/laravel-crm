@@ -70,6 +70,7 @@ services:
       - ${SOURCE_CODE_PATH_HOST}:${SOURCE_CODE_PATH_CONTAINER}
     ports:
       - ${NODE_PORT}:6001
+      - 5173:5173
     tty: true
     depends_on:
       - app
