@@ -2,23 +2,14 @@
 @extends('adminlte::page')
 
 @section('content')
-    <form action="{{ route('backend.categories.store') }}" method="post" class="card">
-        @csrf
-        <div class="card-header">
-            <h3 class="card-title">Thêm category</h3>
-        </div>
-        <div class="card-body">
-            <div class="mb-3">
-                <label class="form-label required">Tên</label>
-                <input type="text" class="form-control" name="name" aria-describedby="name" placeholder="Enter name">
-            </div>
-
-        </div>
-        <div class="card-footer text-end">
-            <a class="btn btn-default" href="{{ url()->previous() }}">Back</a>
-            <button type="submit" class="btn btn-primary">
-                Lưu
-            </button>
-        </div>
-    </form>
+    <x-adminlte-card title="Thêm category" theme="primary" icon="fas fa-plus">
+        <form action="{{ route('backend.categories.store') }}" method="POST">
+            @csrf
+            <x-adminlte-input name="name" label="{{ __('backend.label.name') }}" placeholder="Enter name" required />
+            <x-slot name="footerSlot">
+                <a class="btn btn-default" href="{{ route('backend.categories.index') }}">{{ __('backend.button.cancel') }}</a>
+                <x-adminlte-button type="submit" label="{{ __('backend.button.save') }}" theme="primary" />
+            </x-slot>
+        </form>
+    </x-adminlte-card>
 @endsection

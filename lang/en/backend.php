@@ -3,6 +3,14 @@
 return [
     'label' => [
         'id' => 'ID',
+        'title' => 'Title',
+        'thumbnail' => 'Thumbnail',
+        'excerpt' => 'Excerpt',
+        'content' => 'Content',
+        'status' => 'Status',
+        'category' => 'Category',
+        'tags' => 'Tags',
+        'detail' => 'Detail',
         'name' => 'Name',
         'description' => 'Description',
         'created_at' => 'Created At',
@@ -11,6 +19,12 @@ return [
     ],
     'button' => [
         'add' => 'Add',
+        'edit' => 'Edit',
+        'delete' => 'Delete',
+        'save' => 'Save',
+        'cancel' => 'Cancel',
+        'back' => 'Back',
+        'view' => 'View',
     ],
     'category' => [
         'title' => 'Category Management',
@@ -23,5 +37,9 @@ return [
         'create' => 'Create Post',
         'edit' => 'Edit Post',
         'index' => 'Posts',
+    ],
+    'statuses' => [
+        'draft' => 'Draft',
+        'published' => 'Published',
     ],
 ];

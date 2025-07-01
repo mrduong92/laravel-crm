@@ -25,4 +25,9 @@ class Post extends AppModel
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function getThumbnailAttribute($value)
+    {
+        return $value ? asset('storage/' . $value) : null;
+    }
 }
