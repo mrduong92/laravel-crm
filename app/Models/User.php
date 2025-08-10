@@ -6,11 +6,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Namu\WireChat\Traits\Chatable;
+use Spatie\Multitenancy\Models\Tenant;
+use Illuminate\Support\Collection;
+use App\Models\Customer;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, Chatable;
 
     /**
      * The attributes that are mass assignable.
@@ -44,5 +48,31 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function tenant()
+    {
+        return $this->belongsTo(Tenant::class);
+    }
+
+    public function searchChatables(string $query): ?Collection
+    {
+        $searchableFields = ['name'];
+
+        $userQuery = User::select(['id', 'name'])->where(function ($queryBuilder) use ($searchableFields, $query) {
+            foreach ($searchableFields as $field) {
+                $queryBuilder->orWhere($field, 'LIKE', '%' . $query . '%');
+            }
+        });
+
+        $customerQuery = Customer::select(['id', 'name'])->where(function ($queryBuilder) use ($searchableFields, $query) {
+            foreach ($searchableFields as $field) {
+                $queryBuilder->orWhere($field, 'LIKE', '%' . $query . '%');
+            }
+        });
+
+        $unionQuery = $userQuery->union($customerQuery);
+
+        return $unionQuery->limit(20)->get();
     }
 }
