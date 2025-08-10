@@ -8,7 +8,7 @@ use App\Http\Controllers\Backend\PostController as BackendPostController;
 use App\Http\Controllers\Backend\CategoryController as BackendCategoryController;
 
 Route::group([
-    'domain' => parse_url(config('app.url'), PHP_URL_HOST),
+    // 'domain' => parse_url(config('app.url'), PHP_URL_HOST),
     'middleware' => ['web'],
     'as' => 'frontend.',
 ], function () {
@@ -17,13 +17,15 @@ Route::group([
 
 Auth::routes();
 
-Route::group([
-    'domain' => parse_url(config('app.url'), PHP_URL_HOST),
-    'middleware' => ['web'],
-    'as' => 'backend.',
-    'prefix' => 'admin',
-], function () {
-    Route::get('/', [BackendHomeController::class, 'index'])->name('home');
-    Route::resource('posts', BackendPostController::class);
-    Route::resource('categories', BackendCategoryController::class);
+Route::middleware('tenant')->group(function () {
+    Route::group([
+        // 'domain' => parse_url(config('app.url'), PHP_URL_HOST),
+        'middleware' => ['web'],
+        'as' => 'backend.',
+        'prefix' => 'admin',
+    ], function () {
+        Route::get('/', [BackendHomeController::class, 'index'])->name('home');
+        Route::resource('posts', BackendPostController::class);
+        Route::resource('categories', BackendCategoryController::class);
+    });
 });

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Spatie\Multitenancy\Models\Tenant;
 
 class HomeController extends Controller
 {
@@ -25,6 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        dd(Tenant::checkCurrent());
         return view('backend.home');
     }
 }
