@@ -17,7 +17,7 @@ Route::group([
 
 Auth::routes();
 
-// Route::middleware('tenant')->group(function () {
+Route::middleware('tenant')->group(function () {
     Route::group([
         // 'domain' => parse_url(config('app.url'), PHP_URL_HOST),
         'middleware' => ['web'],
@@ -28,4 +28,4 @@ Auth::routes();
         Route::resource('posts', BackendPostController::class);
         Route::resource('categories', BackendCategoryController::class);
     });
-// });
+});
