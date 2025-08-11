@@ -1,4 +1,4 @@
-ARG tag
+ARG tag=8.2
 
 FROM php:${tag}-fpm
 
@@ -7,10 +7,13 @@ ARG SOURCE_CODE_PATH_CONTAINER
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     curl \
+    ca-certificates \
+    gnupg \
     libpng-dev \
     libonig-dev \
     libxml2-dev \
     libzip-dev \
+    libpq-dev \
     build-essential \
     libssl-dev \
     zlib1g-dev \
@@ -30,6 +33,10 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install zip \
     && docker-php-source delete
 
+# Install Node.js v22
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
+    && apt-get install -y nodejs
+
 # Install Imagick
 RUN pecl install imagick
 RUN docker-php-ext-enable imagick
@@ -38,6 +45,9 @@ RUN docker-php-ext-install exif
 # Install Mysql
 RUN docker-php-ext-install mysqli
 RUN docker-php-ext-install pdo_mysql
+
+# Intall PostgreSQL
+RUN docker-php-ext-install pdo_pgsql pgsql
 
 # Install GD
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg && docker-php-ext-install gd
