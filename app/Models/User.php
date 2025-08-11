@@ -54,25 +54,4 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Tenant::class);
     }
-
-    public function searchChatables(string $query): ?Collection
-    {
-        $searchableFields = ['name'];
-
-        $userQuery = User::select(['id', 'name'])->where(function ($queryBuilder) use ($searchableFields, $query) {
-            foreach ($searchableFields as $field) {
-                $queryBuilder->orWhere($field, 'LIKE', '%' . $query . '%');
-            }
-        });
-
-        $customerQuery = Customer::select(['id', 'name'])->where(function ($queryBuilder) use ($searchableFields, $query) {
-            foreach ($searchableFields as $field) {
-                $queryBuilder->orWhere($field, 'LIKE', '%' . $query . '%');
-            }
-        });
-
-        $unionQuery = $userQuery->union($customerQuery);
-
-        return $unionQuery->limit(20)->get();
-    }
 }
