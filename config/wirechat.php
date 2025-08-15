@@ -103,7 +103,7 @@ return [
     | the dynamic chat content.
     |
     */
-    'layout' => 'wirechat::layouts.app',
+    'layout' => 'adminlte::page',
 
     /*
     |--------------------------------------------------------------------------

@@ -12,16 +12,16 @@ return [
     | as the size rules. Feel free to tweak each of these messages here.
     |
     */
-    'file' => 'The :attribute field must be a file.',
-    'image' => 'The :attribute field must be an image.',
-    'required' => 'The :attribute field is required.',
+    'file' => ':attribute phải là một tập tin.',
+    'image' => ':attribute phải là một hình ảnh.',
+    'required' => ':attribute là bắt buộc.',
     'max' => [
-        'array' => 'The :attribute field must not have more than :max items.',
-        'file' => 'The :attribute field must not be greater than :max kilobytes.',
-        'numeric' => 'The :attribute field must not be greater than :max.',
-        'string' => 'The :attribute field must not be greater than :max characters.',
+        'array' => ':attribute không được có nhiều hơn :max phần tử.',
+        'file' => ':attribute không được lớn hơn :max kilobytes.',
+        'numeric' => ':attribute không được lớn hơn :max.',
+        'string' => ':attribute không được lớn hơn :max ký tự.',
     ],
-    'mimes' => 'The :attribute must be a file of type: :values.',
+    'mimes' => ':attribute phải là tập tin có định dạng: :values.',
 
     /*
     |--------------------------------------------------------------------------

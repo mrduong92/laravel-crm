@@ -4,7 +4,7 @@
     x-on:open-chat.window="selectedConversationId= $event.detail.conversation; $wire.selectedConversationId= $event.detail.conversation;"
     x-init=" setTimeout(() => {
          conversationElement = document.getElementById('conversation-' + selectedConversationId);
-    
+
          // Scroll to the conversation element
          if (conversationElement) {
              conversationElement.scrollIntoView({ behavior: 'smooth' });

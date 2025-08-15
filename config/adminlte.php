@@ -283,7 +283,7 @@ return [
     */
 
     'laravel_asset_bundling' => false,
-    'laravel_css_path' => 'scss/app.scss',
+    'laravel_css_path' => 'css/app.css',
     'laravel_js_path' => 'js/app.js',
 
     /*
@@ -316,17 +316,15 @@ return [
             'text' => 'search',
         ],
         [
-            'text' => 'Categories',
-            'url' => 'admin/categories',
-            'icon' => 'far fa-fw fa-list-alt',
-            'label' => 1,
-            'label_color' => 'success',
+            'text' => 'blog',
+            'url' => 'admin/blog',
+            'can' => 'manage-blog',
         ],
         [
-            'text' => 'Posts',
-            'url' => 'admin/posts',
+            'text' => 'pages',
+            'url' => 'admin/pages',
             'icon' => 'far fa-fw fa-file',
-            'label' => 2,
+            'label' => 4,
             'label_color' => 'success',
         ],
         ['header' => 'account_settings'],
@@ -501,56 +499,6 @@ return [
                 ],
             ],
         ],
-        'summernote' => [
-            'active' => false,
-            'files' => [
-                [
-                    'type' => 'js',
-                    'asset' => true,
-                    'location' => 'vendor/summernote/summernote-bs4.min.js',
-                ],
-                [
-                    'type' => 'css',
-                    'asset' => true,
-                    'location' => 'vendor/summernote/summernote-bs4.min.css',
-                ],
-            ],
-        ],
-        'BsCustomFileInput' => [
-            'active' => false,
-            'files' => [
-                [
-                    'type' => 'js',
-                    'asset' => true,
-                    'location' => 'vendor/bs-custom-file-input/bs-custom-file-input.min.js',
-                ],
-            ],
-        ],
-        'KrajeeFileinput' => [
-            'active' => false,
-            'files' => [
-                [
-                    'type' => 'css',
-                    'asset' => true,
-                    'location' => 'vendor/krajee-fileinput/css/fileinput.min.css',
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => true,
-                    'location' => 'vendor/krajee-fileinput/js/fileinput.min.js',
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => true,
-                    'location' => 'vendor/krajee-fileinput/themes/fa5/theme.min.js',
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => true,
-                    'location' => 'vendor/krajee-fileinput/js/locales/ja.js',
-                ],
-            ],
-        ],
     ],
 
     /*
@@ -598,5 +546,5 @@ return [
     |
     */
 
-    'livewire' => false,
+    'livewire' => true,
 ];

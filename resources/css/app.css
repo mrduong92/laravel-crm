@@ -11,3 +11,16 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+#wirechat p {
+    margin: 0;
+}
+
+#wirechat pre {
+    margin: 0;
+    padding: 0;
+}
+
+#wirechat .text-white pre {
+    color: #fff;
+}
