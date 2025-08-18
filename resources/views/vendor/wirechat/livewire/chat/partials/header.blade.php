@@ -99,53 +99,6 @@
                                 </button>
                             </x-wirechat::actions.show-chat-info>
                         @endif
-
-
-                        @if ($this->isWidget())
-                            <x-wirechat::dropdown-link @click="$dispatch('close-chat',{conversation: {{json_encode($conversation->id)}} })">
-                                @lang('wirechat::chat.actions.close_chat.label')
-                            </x-wirechat::dropdown-link>
-                        @else
-                            <x-wirechat::dropdown-link href="{{ route(WireChat::indexRouteName()) }}" class="shrink-0">
-                                @lang('wirechat::chat.actions.close_chat.label')
-                            </x-wirechat::dropdown-link>
-                        @endif
-
-
-                        {{-- Only show delete and clear if conversation is NOT group --}}
-                        @if (!$conversation->isGroup())
-                            <button class="w-full" wire:click="clearConversation"
-                                wire:confirm="{{ __('wirechat::chat.actions.clear_chat.confirmation_message') }}">
-
-                                <x-wirechat::dropdown-link>
-                                    @lang('wirechat::chat.actions.clear_chat.label')
-                                </x-wirechat::dropdown-link>
-                            </button>
-
-                            <button wire:click="deleteConversation"
-                                wire:confirm="{{ __('wirechat::chat.actions.delete_chat.confirmation_message') }}"
-                                class="w-full text-start">
-
-                                <x-wirechat::dropdown-link class="text-red-500 dark:text-red-500">
-                                    @lang('wirechat::chat.actions.delete_chat.label')
-                                </x-wirechat::dropdown-link>
-
-                            </button>
-                        @endif
-
-
-                        @if ($conversation->isGroup() && !$this->auth->isOwnerOf($conversation))
-                            <button wire:click="exitConversation"
-                                wire:confirm="{{ __('wirechat::chat.actions.exit_group.confirmation_message') }}"
-                                class="w-full text-start ">
-
-                                <x-wirechat::dropdown-link class="text-red-500 dark:text-gray-500">
-                                    @lang('wirechat::chat.actions.exit_group.label')
-                                </x-wirechat::dropdown-link>
-
-                            </button>
-                        @endif
-
                     </x-slot>
                 </x-wirechat::dropdown>
 

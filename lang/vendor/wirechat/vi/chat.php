@@ -58,6 +58,10 @@ return [
             'confirmation_message' => 'Bạn có chắc chắn muốn xóa cuộc trò chuyện này không? Điều này chỉ xóa cuộc trò chuyện ở phía bạn và sẽ không xóa đối với những người tham gia khác.',
         ],
 
+        'view_suggestion' => [
+            'label' => 'Gợi ý trả lời',
+        ],
+
         'delete_for_everyone' => [
             'label' => 'Xóa cho tất cả mọi người',
             'confirmation_message' => 'Bạn có chắc chắn không?',
