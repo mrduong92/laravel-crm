@@ -21,8 +21,8 @@
          class="{{ config('adminlte.logo_img_class', 'brand-image-xl') }} logo-xs">
 
     {{-- Large brand logo --}}
-    <img src="{{ asset(config('adminlte.logo_img_xl')) }}"
+    {{-- <img src="{{ asset(config('adminlte.logo_img_xl')) }}"
          alt="{{ config('adminlte.logo_img_alt', 'AdminLTE') }}"
-         class="{{ config('adminlte.logo_img_xl_class', 'brand-image-xs') }} logo-xl">
+         class="{{ config('adminlte.logo_img_xl_class', 'brand-image-xs') }} logo-xl"> --}}
 
 </a>
