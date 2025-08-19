@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Livewire::component('wirechat.chats', Chats::class);
         Livewire::component('wirechat.chat', Chat::class);
-        Message::observe(MessageObserver::class);
+        // Message::observe(MessageObserver::class);
         // Event::listen(
         //     MessageCreated::class,
         //     SendZaloMessage::class,

@@ -4,8 +4,9 @@ return [
     'logo' => '',
     'super_role' => 'superadmin',
     'roles' => [
+        'owner',
         'admin',
-        'user',
+        'sales',
     ],
     'per_page' => 9,
     'statuses' => [

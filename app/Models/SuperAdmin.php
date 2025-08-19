@@ -3,15 +3,14 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Namu\WireChat\Traits\Chatable;
 
-class User extends Authenticatable
+class SuperAdmin extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, Chatable;
+    use Notifiable;
+
+    protected $guard = 'superadmin';
 
     /**
      * The attributes that are mass assignable.
@@ -22,11 +21,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'external_id',
-        'source',
-        'role',
-        'status',
-        'created_by',
     ];
 
     /**
@@ -50,20 +44,5 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
-    }
-
-    public function isOwner()
-    {
-        return $this->role === 'owner';
-    }
-
-    public function isAdmin()
-    {
-        return $this->role === 'admin';
-    }
-
-    public function isSales()
-    {
-        return $this->role === 'sales';
     }
 }

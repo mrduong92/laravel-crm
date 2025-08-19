@@ -13,6 +13,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        $middleware
+            ->group('guards.superadmin', [
+                \App\Http\Middleware\SuperAdminAuth::class,
+            ]);
         // $middleware
         //     ->group('tenant', [
         //         \Spatie\Multitenancy\Http\Middleware\NeedsTenant::class,

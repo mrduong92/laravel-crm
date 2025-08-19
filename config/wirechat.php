@@ -39,7 +39,7 @@ return [
     | start a new conversation)
     |
     */
-    'user_model' => \App\Models\User::class,
+    'user_model' => \App\Models\Customer::class,
 
     /*
     |--------------------------------------------------------------------------

@@ -27,11 +27,14 @@
     {{-- Main Content --}}
     <div class="content">
         <div class="{{ config('adminlte.classes_content') ?: $def_container_class }}">
-            @stack('content')
-            @yield('content')
-            <div id="wirechat" class="h-[calc(100vh)]">
-                {{ $slot }}
-            </div>
+            @if (isset($slot))
+                <div id="wirechat" class="h-[calc(100vh)]">
+                    {{ $slot }}
+                </div>
+            @else
+                @stack('content')
+                @yield('content')
+            @endif
         </div>
     </div>
 

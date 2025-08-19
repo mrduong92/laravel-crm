@@ -6,6 +6,8 @@ use Livewire\Component;
 use Namu\WireChat\Models\Message;
 use Namu\WireChat\Livewire\Chat\Chat as BaseChat;
 use Namu\WireChat\Livewire\Chats\Chats;
+use Livewire\Attributes\Computed;
+use App\Models\User;
 
 class Chat extends BaseChat
 {
@@ -40,5 +42,16 @@ class Chat extends BaseChat
             // broadcast
             // $this->selectedConversation->getReceiver()->notify(new MessageRead($this->selectedConversation->id));
         }
+    }
+
+    /**
+     * Returns the authenticated user.
+     *
+     * @return \Illuminate\Contracts\Auth\Authenticatable|null
+     */
+    #[Computed(persist: true)]
+    public function auth()
+    {
+        return User::find(2);
     }
 }

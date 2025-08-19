@@ -11,20 +11,16 @@ class Customer extends AppModel
     use Chatable;
 
     protected $fillable = [
-        'tenant_id',
-        'user_id',
-        'uid',
+        'assign_to',
         'name',
+        'phone',
         'email',
+        'external_id',
+        'source',
     ];
 
-    public function tenant()
+    public function assignTo()
     {
-        return $this->belongsTo(Tenant::class);
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'assign_to');
     }
 }
