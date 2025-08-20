@@ -1,5 +1,8 @@
 <?php
 
+use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
+use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
+
 return [
 
     /*
@@ -39,7 +42,7 @@ return [
     | start a new conversation)
     |
     */
-    'user_model' => \App\Models\Customer::class,
+    'user_model' => \App\Models\User::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -89,7 +92,12 @@ return [
     */
     'routes' => [
         'prefix' => 'chats',
-        'middleware' => ['web', 'auth:web'],
+        'middleware' => [
+            'web',
+            'auth:web',
+            // InitializeTenancyByDomain::class,
+            // PreventAccessFromCentralDomains::class
+        ],
         'guards' => ['web'],
     ],
 

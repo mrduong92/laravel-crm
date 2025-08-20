@@ -20,6 +20,7 @@
         "laravel/tinker": "^2.10.1",
         "laravel/ui": "^4.6",
         "namu/wirechat": "^0.2.10",
+        "predis/predis": "^3.2",
         "stancl/tenancy": "^3.9"
     },
     "require-dev": {

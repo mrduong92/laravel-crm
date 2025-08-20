@@ -6,15 +6,7 @@
     @php
     //$receiver =$conversation->getReceiver();
     $group = $conversation->isGroup() ? $conversation->group : null;
-    $receiver = $conversation->isGroup() ? null : (
-        $conversation->isPrivate()
-            ? ($conversation->peer_participant?->participantable !== $this->auth
-                ? $conversation->peer_participant?->participantable
-                : $this->auth)
-            : $this->auth
-    );
-
-    // dd($conversation->peer_participant->participantable);
+    $receiver = $conversation->isGroup() ? null : ($conversation->isPrivate() ? $conversation->peer_participant?->participantable : $this->auth);
     //$receiver = $conversation->isGroup() ? null : ($conversation->isPrivate() ? $conversation->peerParticipant()?->participantable : $this->auth);
     $lastMessage = $conversation->lastMessage;
     //mark isReadByAuth true if user has chat opened

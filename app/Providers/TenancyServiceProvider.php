@@ -12,6 +12,7 @@ use Stancl\Tenancy\Events;
 use Stancl\Tenancy\Jobs;
 use Stancl\Tenancy\Listeners;
 use Stancl\Tenancy\Middleware;
+use JeroenNoten\LaravelAdminLte\Events\BuildingMenu;
 
 class TenancyServiceProvider extends ServiceProvider
 {
@@ -116,6 +117,15 @@ class TenancyServiceProvider extends ServiceProvider
                 Event::listen($event, $listener);
             }
         }
+        Event::listen(BuildingMenu::class, function (BuildingMenu $event) {
+            if (tenant()) {
+                $event->menu->add('Chat');
+                $event->menu->add([
+                    'text' => 'Chat',
+                    'url' => 'chats',
+                ]);
+            }
+        });
     }
 
     protected function mapRoutes()

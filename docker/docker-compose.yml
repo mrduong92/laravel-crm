@@ -54,6 +54,12 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_ROOT_HOST: '%'
+  redis:
+    container_name: redis
+    image: redis:latest
+    restart: always
+    volumes:
+      - ${DATA_PATH_HOST}/redis:/data
   node:
     container_name: node
     build:

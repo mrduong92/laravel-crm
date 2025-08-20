@@ -5,29 +5,20 @@ namespace App\Http\Controllers\SuperAdmin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class AuthController extends Controller
 {
-    public function loginForm()
+    use AuthenticatesUsers;
+
+    /**
+     * Get the guard to be used during authentication.
+     *
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
+     */
+    protected function guard()
     {
-        return view('superadmin.login');
-    }
-
-    public function login(Request $request)
-    {
-        $credentials = $request->only('email', 'password');
-
-        if (Auth::guard('superadmin')->attempt($credentials)) {
-            return redirect()->route('superadmin.dashboard');
-        }
-
-        return back()->withErrors(['email' => 'Sai email hoặc mật khẩu']);
-    }
-
-    public function logout()
-    {
-        Auth::guard('superadmin')->logout();
-        return redirect()->route('superadmin.login');
+        return Auth::guard('superadmin');
     }
 
     public function dashboard()
