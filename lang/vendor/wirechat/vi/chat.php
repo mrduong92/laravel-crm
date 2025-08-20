@@ -7,89 +7,93 @@ return [
      *------------------------*/
     'labels' => [
 
-        'you_replied_to_yourself' => 'You replied to Yourself',
-        'participant_replied_to_you' => ':sender replied to You',
-        'participant_replied_to_themself' => ':sender replied to Themself',
-        'participant_replied_other_participant' => ':sender replied to :receiver',
-        'you' => 'You',
-        'user' => 'User',
-        'replying_to' => 'Replying to :participant',
-        'replying_to_yourself' => 'Replying to Yourself',
-        'attachment' => 'Attachment',
+        'you_replied_to_yourself' => 'Bạn đã trả lời chính mình',
+        'participant_replied_to_you' => ':sender đã trả lời bạn',
+        'participant_replied_to_themself' => ':sender đã trả lời chính họ',
+        'participant_replied_other_participant' => ':sender đã trả lời :receiver',
+        'you' => 'Bạn',
+        'user' => 'Người dùng',
+        'replying_to' => 'Đang trả lời :participant',
+        'replying_to_yourself' => 'Đang trả lời chính mình',
+        'attachment' => 'Tệp đính kèm',
     ],
 
     'inputs' => [
         'message' => [
-            'label' => 'Message',
-            'placeholder' => 'Type a message',
+            'label' => 'Tin nhắn',
+            'placeholder' => 'Nhập tin nhắn',
         ],
         'media' => [
-            'label' => 'Media',
-            'placeholder' => 'Media',
+            'label' => 'Phương tiện',
+            'placeholder' => 'Phương tiện',
         ],
         'files' => [
-            'label' => 'Files',
-            'placeholder' => 'Files',
+            'label' => 'Tệp',
+            'placeholder' => 'Tệp',
         ],
     ],
 
     'message_groups' => [
-        'today' => 'Today',
-        'yesterday' => 'Yesterday',
+        'today' => 'Hôm nay',
+        'yesterday' => 'Hôm qua',
 
     ],
 
     'actions' => [
         'open_group_info' => [
-            'label' => 'Group Info',
+            'label' => 'Thông tin nhóm',
         ],
         'open_chat_info' => [
-            'label' => 'Chat Info',
+            'label' => 'Thông tin trò chuyện',
         ],
         'close_chat' => [
-            'label' => 'Close Chat',
+            'label' => 'Đóng trò chuyện',
         ],
         'clear_chat' => [
-            'label' => 'Clear Chat History',
-            'confirmation_message' => 'Are you sure you want to clear your chat history? This will only clear your chat and will not affect other participants.',
+            'label' => 'Xóa lịch sử trò chuyện',
+            'confirmation_message' => 'Bạn có chắc chắn muốn xóa lịch sử trò chuyện của mình không? Điều này chỉ xóa trò chuyện của bạn và sẽ không ảnh hưởng đến những người tham gia khác.',
         ],
         'delete_chat' => [
-            'label' => 'Delete Chat',
-            'confirmation_message' => 'Are you sure you want to delete this chat? This will only remove the chat from your side and will not delete it for other participants.',
+            'label' => 'Xóa trò chuyện',
+            'confirmation_message' => 'Bạn có chắc chắn muốn xóa cuộc trò chuyện này không? Điều này chỉ xóa cuộc trò chuyện ở phía bạn và sẽ không xóa đối với những người tham gia khác.',
+        ],
+
+        'view_suggestion' => [
+            'label' => 'Gợi ý trả lời',
         ],
 
         'delete_for_everyone' => [
-            'label' => 'Delete for everyone',
-            'confirmation_message' => 'Are you sure?',
+            'label' => 'Xóa cho tất cả mọi người',
+            'confirmation_message' => 'Bạn có chắc chắn không?',
         ],
         'delete_for_me' => [
-            'label' => 'Delete for me',
-            'confirmation_message' => 'Are you sure?',
+            'label' => 'Xóa cho tôi',
+            'confirmation_message' => 'Bạn có chắc chắn không?',
         ],
         'reply' => [
-            'label' => 'Reply',
+            'label' => 'Trả lời',
         ],
 
         'exit_group' => [
-            'label' => 'Exit Group',
-            'confirmation_message' => 'Are you sure you want to exit this group?',
+            'label' => 'Rời nhóm',
+            'confirmation_message' => 'Bạn có chắc chắn muốn rời nhóm này không?',
         ],
         'upload_file' => [
-            'label' => 'File',
+            'label' => 'Tệp',
         ],
         'upload_media' => [
-            'label' => 'Photos & Videos',
+            'label' => 'Ảnh & Video',
         ],
     ],
 
     'messages' => [
 
-        'cannot_exit_self_or_private_conversation' => 'Cannot exit self or private conversation',
-        'owner_cannot_exit_conversation' => 'Owner cannot exit conversation',
-        'rate_limit' => 'Too many attempts!, Please slow down',
-        'conversation_not_found' => 'Conversation not found.',
-        'conversation_id_required' => 'A conversation id is required',
-        'invalid_conversation_input' => 'Invalid conversation input.',
+        'cannot_exit_self_or_private_conversation' => 'Không thể thoát khỏi cuộc trò chuyện cá nhân hoặc riêng tư',
+        'owner_cannot_exit_conversation' => 'Chủ sở hữu không thể thoát khỏi cuộc trò chuyện',
+        'rate_limit' => 'Quá nhiều lần thử! Vui lòng chậm lại',
+        'conversation_not_found' => 'Không tìm thấy cuộc trò chuyện.',
+        'conversation_id_required' => 'Yêu cầu mã cuộc trò chuyện',
+        'invalid_conversation_input' => 'Dữ liệu cuộc trò chuyện không hợp lệ.',
     ],
 
     /**-------------------------
@@ -98,16 +102,16 @@ return [
 
     'info' => [
         'heading' => [
-            'label' => 'Chat Info',
+            'label' => 'Thông tin trò chuyện',
         ],
         'actions' => [
             'delete_chat' => [
-                'label' => 'Delete Chat',
-                'confirmation_message' => 'Are you sure you want to delete this chat? This will only remove the chat from your side and will not delete it for other participants.',
+                'label' => 'Xóa trò chuyện',
+                'confirmation_message' => 'Bạn có chắc chắn muốn xóa cuộc trò chuyện này không? Điều này chỉ xóa cuộc trò chuyện ở phía bạn và sẽ không xóa đối với những người tham gia khác.',
             ],
         ],
         'messages' => [
-            'invalid_conversation_type_error' => 'Only private and self conversations allowed',
+            'invalid_conversation_type_error' => 'Chỉ cho phép cuộc trò chuyện cá nhân và riêng tư',
         ],
 
     ],
@@ -121,103 +125,103 @@ return [
         // Group info component
         'info' => [
             'heading' => [
-                'label' => 'Group Info',
+                'label' => 'Thông tin nhóm',
             ],
             'labels' => [
-                'members' => 'Members',
-                'add_description' => 'Add a group description',
+                'members' => 'Thành viên',
+                'add_description' => 'Thêm mô tả nhóm',
             ],
             'inputs' => [
                 'name' => [
-                    'label' => 'Group name',
-                    'placeholder' => 'Enter Name',
+                    'label' => 'Tên nhóm',
+                    'placeholder' => 'Nhập tên',
                 ],
                 'description' => [
-                    'label' => 'Description',
-                    'placeholder' => 'Optional',
+                    'label' => 'Mô tả',
+                    'placeholder' => 'Không bắt buộc',
                 ],
                 'photo' => [
-                    'label' => 'Photo',
+                    'label' => 'Ảnh',
                 ],
             ],
             'actions' => [
                 'delete_group' => [
-                    'label' => 'Delete Group',
-                    'confirmation_message' => 'Are you sure you want to delete this Group ?.',
-                    'helper_text' => 'Before you can delete the group, you need to remove all group members.',
+                    'label' => 'Xóa nhóm',
+                    'confirmation_message' => 'Bạn có chắc chắn muốn xóa nhóm này không?',
+                    'helper_text' => 'Trước khi xóa nhóm, bạn cần xóa tất cả thành viên khỏi nhóm.',
                 ],
                 'add_members' => [
-                    'label' => 'Add Members',
+                    'label' => 'Thêm thành viên',
                 ],
                 'group_permissions' => [
-                    'label' => 'Group Permissions',
+                    'label' => 'Quyền nhóm',
                 ],
                 'exit_group' => [
-                    'label' => 'Exit Group',
-                    'confirmation_message' => 'Are you sure you want to exit Group ?.',
+                    'label' => 'Rời nhóm',
+                    'confirmation_message' => 'Bạn có chắc chắn muốn rời nhóm không?',
 
                 ],
             ],
             'messages' => [
-                'invalid_conversation_type_error' => 'Only group conversations allowed',
+                'invalid_conversation_type_error' => 'Chỉ cho phép cuộc trò chuyện nhóm',
             ],
         ],
         // Members component
         'members' => [
             'heading' => [
-                'label' => 'Members',
+                'label' => 'Thành viên',
             ],
             'inputs' => [
                 'search' => [
-                    'label' => 'Search',
-                    'placeholder' => 'Search Members',
+                    'label' => 'Tìm kiếm',
+                    'placeholder' => 'Tìm kiếm thành viên',
                 ],
             ],
             'labels' => [
-                'members' => 'Members',
-                'owner' => 'Owner',
-                'admin' => 'Admin',
-                'no_members_found' => 'No Members found',
+                'members' => 'Thành viên',
+                'owner' => 'Chủ sở hữu',
+                'admin' => 'Quản trị viên',
+                'no_members_found' => 'Không tìm thấy thành viên nào',
             ],
             'actions' => [
                 'send_message_to_yourself' => [
-                    'label' => 'Message Yourself',
+                    'label' => 'Nhắn tin cho chính mình',
 
                 ],
                 'send_message_to_member' => [
-                    'label' => 'Message :member',
+                    'label' => 'Nhắn tin cho :member',
 
                 ],
                 'dismiss_admin' => [
-                    'label' => 'Dismiss As Admin',
-                    'confirmation_message' => 'Are you sure you want to dismiss :member as Admin ?.',
+                    'label' => 'Bỏ quyền quản trị viên',
+                    'confirmation_message' => 'Bạn có chắc chắn muốn bỏ quyền quản trị viên của :member không?',
                 ],
                 'make_admin' => [
-                    'label' => 'Make Admin',
-                    'confirmation_message' => 'Are you sure you want to make :member an Admin ?.',
+                    'label' => 'Thêm quyền quản trị viên',
+                    'confirmation_message' => 'Bạn có chắc chắn muốn thêm quyền quản trị viên cho :member không?',
                 ],
                 'remove_from_group' => [
-                    'label' => 'Remove',
-                    'confirmation_message' => 'Are you sure you want remove :member from this Group ?.',
+                    'label' => 'Xóa khỏi nhóm',
+                    'confirmation_message' => 'Bạn có chắc chắn muốn xóa :member khỏi nhóm này không?',
                 ],
                 'load_more' => [
-                    'label' => 'Load more',
+                    'label' => 'Tải thêm',
                 ],
 
             ],
             'messages' => [
-                'invalid_conversation_type_error' => 'Only group conversations allowed',
+                'invalid_conversation_type_error' => 'Chỉ cho phép cuộc trò chuyện nhóm',
             ],
         ],
         // add-Members component
         'add_members' => [
             'heading' => [
-                'label' => 'Add Members',
+                'label' => 'Thêm thành viên',
             ],
             'inputs' => [
                 'search' => [
-                    'label' => 'Search',
-                    'placeholder' => 'Search',
+                    'label' => 'Tìm kiếm',
+                    'placeholder' => 'Tìm kiếm',
                 ],
             ],
             'labels' => [
@@ -225,42 +229,42 @@ return [
             ],
             'actions' => [
                 'save' => [
-                    'label' => 'Save',
+                    'label' => 'Lưu',
 
                 ],
 
             ],
             'messages' => [
-                'invalid_conversation_type_error' => 'Only group conversations allowed',
-                'members_limit_error' => 'Members cannot exceed :count',
-                'member_already_exists' => ' Already added to group',
+                'invalid_conversation_type_error' => 'Chỉ cho phép cuộc trò chuyện nhóm',
+                'members_limit_error' => 'Thành viên không được vượt quá :count',
+                'member_already_exists' => ' Đã được thêm vào nhóm',
             ],
         ],
         // permissions component
         'permisssions' => [
             'heading' => [
-                'label' => 'Permissions',
+                'label' => 'Quyền',
             ],
             'inputs' => [
                 'search' => [
-                    'label' => 'Search',
-                    'placeholder' => 'Search',
+                    'label' => 'Tìm kiếm',
+                    'placeholder' => 'Tìm kiếm',
                 ],
             ],
             'labels' => [
-                'members_can' => 'Members can',
+                'members_can' => 'Thành viên có thể',
 
             ],
             'actions' => [
                 'edit_group_information' => [
-                    'label' => 'Edit Group Information',
-                    'helper_text' => 'This includes the name, icon and description',
+                    'label' => 'Chỉnh sửa thông tin nhóm',
+                    'helper_text' => 'Bao gồm tên, biểu tượng và mô tả',
                 ],
                 'send_messages' => [
-                    'label' => 'Send Messages',
+                    'label' => 'Gửi tin nhắn',
                 ],
                 'add_other_members' => [
-                    'label' => 'Add Other Members',
+                    'label' => 'Thêm thành viên khác',
                 ],
 
             ],

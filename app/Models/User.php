@@ -7,9 +7,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Namu\WireChat\Traits\Chatable;
-use Spatie\Multitenancy\Models\Tenant;
-use Illuminate\Support\Collection;
-use App\Models\Customer;
 
 class User extends Authenticatable
 {
@@ -25,6 +22,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'external_id',
+        'source',
+        'role',
+        'status',
+        'created_by',
     ];
 
     /**
@@ -50,8 +52,18 @@ class User extends Authenticatable
         ];
     }
 
-    public function tenant()
+    public function isOwner()
     {
-        return $this->belongsTo(Tenant::class);
+        return $this->role === 'owner';
+    }
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isSales()
+    {
+        return $this->role === 'sales';
     }
 }

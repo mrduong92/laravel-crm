@@ -39,7 +39,7 @@ return [
     | start a new conversation)
     |
     */
-    'user_model' => \App\Models\User::class,
+    'user_model' => \App\Models\Customer::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -103,7 +103,7 @@ return [
     | the dynamic chat content.
     |
     */
-    'layout' => 'wirechat::layouts.app',
+    'layout' => 'adminlte::page',
 
     /*
     |--------------------------------------------------------------------------

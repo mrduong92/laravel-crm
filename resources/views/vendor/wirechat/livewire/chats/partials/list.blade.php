@@ -6,7 +6,15 @@
     @php
     //$receiver =$conversation->getReceiver();
     $group = $conversation->isGroup() ? $conversation->group : null;
-    $receiver = $conversation->isGroup() ? null : ($conversation->isPrivate() ? $conversation->peer_participant?->participantable : $this->auth);
+    $receiver = $conversation->isGroup() ? null : (
+        $conversation->isPrivate()
+            ? ($conversation->peer_participant?->participantable !== $this->auth
+                ? $conversation->peer_participant?->participantable
+                : $this->auth)
+            : $this->auth
+    );
+
+    // dd($conversation->peer_participant->participantable);
     //$receiver = $conversation->isGroup() ? null : ($conversation->isPrivate() ? $conversation->peerParticipant()?->participantable : $this->auth);
     $lastMessage = $conversation->lastMessage;
     //mark isReadByAuth true if user has chat opened
@@ -38,14 +46,14 @@
                 this.showUnreadStatus= false;
             }
     }
-    }"  
+    }"
 
-    id="conversation-{{ $conversation->id }}" 
+    id="conversation-{{ $conversation->id }}"
         wire:key="conversation-em-{{ $conversation->id }}-{{ $conversation->updated_at->timestamp }}"
         x-on:chat-opened.window="handleChatOpened($event)"
         x-on:chat-closed.window="handleChatClosed($event)">
-        <a @if ($widget) tabindex="0" 
-        role="button" 
+        <a @if ($widget) tabindex="0"
+        role="button"
         dusk="openChatWidgetButton"
         @click="$dispatch('open-chat',{conversation:@js($conversation->id)})"
         @keydown.enter="$dispatch('open-chat',{conversation:@js($conversation->id)})"

@@ -5,73 +5,73 @@ return [
     // new-chat component
     'chat' => [
         'labels' => [
-            'heading' => ' New Chat',
-            'you' => 'You',
+            'heading' => 'Trò chuyện mới',
+            'you' => 'Bạn',
 
         ],
 
         'inputs' => [
             'search' => [
-                'label' => 'Search Conversations',
-                'placeholder' => 'Search',
+                'label' => 'Tìm kiếm cuộc trò chuyện',
+                'placeholder' => 'Tìm kiếm',
             ],
         ],
 
         'actions' => [
             'new_group' => [
-                'label' => 'New group',
+                'label' => 'Nhóm mới',
             ],
 
         ],
 
         'messages' => [
 
-            'empty_search_result' => 'No users found matching your search.',
+            'empty_search_result' => 'Không tìm thấy người dùng phù hợp với tìm kiếm của bạn.',
         ],
     ],
 
     // new-group component
     'group' => [
         'labels' => [
-            'heading' => ' New Chat',
-            'add_members' => ' Add Members',
+            'heading' => 'Trò chuyện nhóm mới',
+            'add_members' => 'Thêm thành viên',
 
         ],
 
         'inputs' => [
             'name' => [
-                'label' => 'Group Name',
-                'placeholder' => 'Enter Name',
+                'label' => 'Tên nhóm',
+                'placeholder' => 'Nhập tên',
             ],
             'description' => [
-                'label' => 'Description',
-                'placeholder' => 'Optional',
+                'label' => 'Mô tả',
+                'placeholder' => 'Không bắt buộc',
             ],
             'search' => [
-                'label' => 'Search',
-                'placeholder' => 'Search',
+                'label' => 'Tìm kiếm',
+                'placeholder' => 'Tìm kiếm',
             ],
             'photo' => [
-                'label' => 'Photo',
+                'label' => 'Ảnh',
             ],
         ],
 
         'actions' => [
             'cancel' => [
-                'label' => 'Cancel',
+                'label' => 'Hủy',
             ],
             'next' => [
-                'label' => 'Next',
+                'label' => 'Tiếp theo',
             ],
             'create' => [
-                'label' => 'Create',
+                'label' => 'Tạo',
             ],
 
         ],
 
         'messages' => [
-            'members_limit_error' => 'Members cannot exceed  :count',
-            'empty_search_result' => 'No users found matching your search.',
+            'members_limit_error' => 'Thành viên không được vượt quá :count',
+            'empty_search_result' => 'Không tìm thấy người dùng phù hợp với tìm kiếm của bạn.',
         ],
     ],
 

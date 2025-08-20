@@ -13,22 +13,17 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('tenant_id');
-            $table->foreign('tenant_id')
-                ->references('id')
-                ->on('tenants')
-                ->onDelete('cascade');
-            $table->unsignedBigInteger('user_id')
-                ->nullable()
-                ->comment('user is assigned to this customer');
-            $table->foreign('user_id')->nullable()
-                ->references('id')
-                ->on('tenants')
-                ->onDelete('cascade');
-            $table->string('uid');
-            $table->string('type')->comment('zalo user, zalo oa, fanpage or tiktok');
             $table->string('name')->nullable();
+            $table->string('phone')->nullable();
             $table->string('email')->nullable();
+            $table->string('source')->comment('zalo, facebook, webchat, …');
+            $table->string('external_id')->comment('ZaloID, FBUID, …');
+            $table->unsignedBigInteger('assigned_to')->nullable()->comment('sale phụ trách');
+            $table->foreign('assigned_to')
+                ->references('id')
+                ->on('users')
+                ->onDelete('set null');
+            $table->string('status')->comment('lead, potential, closed, lost');
             $table->timestamps();
         });
     }

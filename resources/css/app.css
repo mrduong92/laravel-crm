@@ -11,3 +11,36 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+#wirechat main p {
+    margin: 0;
+}
+
+#wirechat main.overscroll-contain pre {
+    margin: 0;
+    padding: 0;
+}
+
+#wirechat main.overscroll-contain .text-white pre {
+    color: #fff;
+}
+
+#wirechat main.overscroll-contain .sticky {
+    margin-top: 20px;
+}
+
+#wirechat a {
+    color: var(--color-gray-700) !important;
+}
+
+#wirechat .bg-\[var\(--wc-light-secondary\)\] {
+    background-color: var(--wc-light-secondary) !important;
+}
+
+#wirechat main section.grid, #wirechat main.md\:grid {
+    display: grid;
+}
+
+#wirechat #chat-drawer section.flex {
+    display: flex !important;
+}
