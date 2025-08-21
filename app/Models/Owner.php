@@ -6,11 +6,11 @@ namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class SuperAdmin extends Authenticatable
+class Owner extends Authenticatable
 {
     use Notifiable;
 
-    protected $guard = 'superadmin';
+    protected $guard = 'owner';
 
     /**
      * The attributes that are mass assignable.
@@ -18,6 +18,7 @@ class SuperAdmin extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
+        'tenant_id',
         'name',
         'email',
         'password',
@@ -44,5 +45,10 @@ class SuperAdmin extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function tenant()
+    {
+        return $this->belongsTo(Tenant::class);
     }
 }

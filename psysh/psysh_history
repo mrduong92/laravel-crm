@@ -1,0 +1,6 @@
+$tenant1 = App\Models\Tenant::create(['id' => 'salebot']);
+$tenant1->domains()->create(['domain' => 'salebot.localhost']);
+$tenant = App\Models\Tenant::first();
+$tenant1 = App\Models\Tenant::create(['id' => 'salebot']);
+$tenant1->domains()->create(['domain' => 'salebot.localhost']);
+User::factory(100)->create()

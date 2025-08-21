@@ -10,8 +10,13 @@
     @php( $logout_url = $logout_url ? route($logout_url) : '' )
 @else
     @php( $profile_url = $profile_url ? url($profile_url) : '' )
-    @php( $logout_url = $logout_url ? url($logout_url) : '' )
+    @if (auth()->guard()->name === 'owner')
+        @php( $logout_url = url('owner/logout') )
+    @else
+        @php( $logout_url = $logout_url ? url($logout_url) : '' )
+    @endif
 @endif
+
 
 <li class="nav-item dropdown user-menu">
 

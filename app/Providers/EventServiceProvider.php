@@ -15,13 +15,12 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        dd(tenant('id'));
         Event::listen(BuildingMenu::class, function (BuildingMenu $event) {
             // Add some items to the menu...
-            $event->menu->add('MAIN NAVIGATION');
+            $event->menu->add('CÀI ĐẶT USER');
             $event->menu->add([
-                'text' => 'Blog',
-                'url' => 'admin/blog',
+                'text' => 'Danh sách user',
+                'url' => '/users',
             ]);
         });
     }

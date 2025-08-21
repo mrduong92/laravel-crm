@@ -12,6 +12,10 @@
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
+.div.dt-container {
+    padding: 10px;
+}
+
 #wirechat main p {
     margin: 0;
 }

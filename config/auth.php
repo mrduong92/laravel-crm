@@ -40,9 +40,9 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'superadmin' => [
+        'owner' => [
             'driver' => 'session',
-            'provider' => 'superadmins',
+            'provider' => 'owners',
         ],
     ],
 
@@ -69,9 +69,9 @@ return [
             'model' => env('AUTH_MODEL', App\Models\User::class),
         ],
 
-        'superadmins' => [
+        'owners' => [
             'driver' => 'eloquent',
-            'model' => App\Models\SuperAdmin::class,
+            'model' => App\Models\Owner::class,
         ],
 
         // 'users' => [
