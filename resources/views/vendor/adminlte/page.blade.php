@@ -53,5 +53,6 @@
 
 @section('adminlte_js')
     @stack('js')
+    @stack('scripts')
     @yield('js')
-@stop
+ @stop

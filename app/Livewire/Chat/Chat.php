@@ -49,9 +49,9 @@ class Chat extends BaseChat
      *
      * @return \Illuminate\Contracts\Auth\Authenticatable|null
      */
-    #[Computed(persist: true)]
-    public function auth()
-    {
-        return User::find(2);
-    }
+    // #[Computed(persist: true)]
+    // public function auth()
+    // {
+    //     return User::find(2);
+    // }
 }

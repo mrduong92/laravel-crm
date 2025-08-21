@@ -48,7 +48,7 @@
                     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
                 @endif
 
-                @vite(['resources/css/app.css', 'resources/js/app.js'])
+                @vite(['resources/css/app.css', 'resources/sass/app.scss', 'resources/js/app.js'])
         @endswitch
     @endif
 

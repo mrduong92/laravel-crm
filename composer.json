@@ -21,7 +21,9 @@
         "laravel/ui": "^4.6",
         "namu/wirechat": "^0.2.10",
         "predis/predis": "^3.2",
-        "stancl/tenancy": "^3.9"
+        "stancl/tenancy": "^3.9",
+        "yajra/laravel-datatables": "^12.0",
+        "yajra/laravel-datatables-oracle": "^12"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.16",
