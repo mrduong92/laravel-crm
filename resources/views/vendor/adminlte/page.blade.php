@@ -13,6 +13,9 @@
 @section('body_data', $layoutHelper->makeBodyData())
 
 @section('body')
+    {{-- Flash messages --}}
+    <x-flash-message/>
+
     <div class="wrapper">
 
         {{-- Preloader Animation (fullscreen mode) --}}

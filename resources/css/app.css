@@ -16,6 +16,10 @@
     padding: 10px;
 }
 
+table.table.dataTable, div.dt-buttons {
+    margin-bottom: 10px !important;
+}
+
 #wirechat main p {
     margin: 0;
 }

@@ -22,7 +22,23 @@ class UsersDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'users.action')
+            ->addColumn('action', function($row){
+                $editUrl = route('users.edit', $row->id);
+                $deleteUrl = route('users.destroy', $row->id);
+                return '
+                    <a href="'.$editUrl.'" class="btn btn-sm btn-warning">
+                        <i class="fas fa-edit"></i> Edit
+                    </a>
+                    <form action="'.$deleteUrl.'" method="POST" style="display:inline;">
+                        '.csrf_field().method_field('DELETE').'
+                        <button type="submit" class="btn btn-sm btn-danger"
+                            onclick="return confirm(\'Bạn có chắc chắn muốn xoá?\')">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </form>
+                ';
+            })
+            ->rawColumns(['action']) // 👈 rất quan trọng
             ->setRowId('id');
     }
 
@@ -45,12 +61,16 @@ class UsersDataTable extends DataTable
             ->setTableId('users')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->orderBy(1)
+            ->orderBy(0, 'desc')
             ->selectStyleSingle()
+            ->dom('Bfrtip')   // 👈 thêm dòng này
             ->buttons([
-                Button::make('add'),
-                Button::make('reset'),
-                Button::make('reload')
+                // Custom nút Add
+                Button::raw([
+                    'text' => '<i class="fas fa-plus"></i> Thêm User',
+                    'className' => 'btn btn-success',
+                    'action' => 'function() { window.location.href = "/users/create"; }'
+                ]),
             ]);
     }
 
@@ -68,7 +88,6 @@ class UsersDataTable extends DataTable
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
-                ->width(60)
                 ->addClass('text-center'),
         ];
     }

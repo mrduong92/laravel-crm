@@ -1,8 +1,8 @@
 
-@extends('layouts.backend')
+@extends('adminlte::page')
 
 @section('content')
-    <form action="{{ route('backend.users.update', $user) }}" method="post" class="card">
+    <form action="{{ route('users.update', $user) }}" method="post" class="card">
         @method('PUT')
         @csrf
         <div class="card-header">
@@ -27,29 +27,6 @@
                 <label class="col-3 form-label required">Password</label>
                 <div class="col">
                     <input type="password" class="form-control" name="password" aria-describedby="password" placeholder="Enter password">
-                </div>
-            </div>
-
-            <div class="mb-3 row">
-                <label class="col-3 col-form-label required">Role</label>
-                <div class="col">
-                    <select class="form-select" name="role">
-                        @foreach (config('common.roles') as $role)
-                            <option value="{{ $role }}" @selected($user->role == $role)>{{ $role }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-
-            <div class="mb-3 row">
-                <label class="col-3 col-form-label required">Người giới thiệu</label>
-                <div class="col">
-                    <select class="form-select" name="referer_id">
-                        <option value="0">---</option>
-                        @foreach ($referers as $referer)
-                            <option value="{{ $referer->id }}" @selected($user->referer_id == $referer->id)>{{ $referer->email }}</option>
-                        @endforeach
-                    </select>
                 </div>
             </div>
         </div>

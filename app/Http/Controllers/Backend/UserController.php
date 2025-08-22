@@ -21,9 +21,7 @@ class UserController extends Controller
 
     public function create()
     {
-        $referers = User::whereRole('admin')->get();
-
-        return view('backend.users.create', compact('referers'));
+        return view('backend.users.create');
     }
 
     public function store(UserRequest $request)
@@ -32,26 +30,17 @@ class UserController extends Controller
             'name',
             'email',
             'password',
-            'role',
-            'referer_id',
-            'coins',
         ]);
-
-        $data['user_id'] = time();
-        $data['referer_id'] = $data['referer_id'] ?: null;
-        $data['refer_code'] = Str::random(10);
 
         User::create($data);
         $request->session()->flash('success', __('messages.created', ['name' => 'user']));
 
-        return redirect(route('backend.users.index'));
+        return redirect(route('users.index'));
     }
 
     public function edit(User $user)
     {
-        $referers = User::whereNot('id', $user->id)->whereRole('admin')->get();
-
-        return view('backend.users.edit', compact('user', 'referers'));
+        return view('backend.users.edit', compact('user'));
     }
 
     public function update($id, UserRequest $request)
@@ -59,11 +48,7 @@ class UserController extends Controller
         $data = $request->only([
             'name',
             'email',
-            'role',
-            'referer_id',
         ]);
-
-        $data['referer_id'] = $data['referer_id'] ?: null;
 
         if (!empty($data['password'])) {
             unset($data['password']);
@@ -72,7 +57,7 @@ class UserController extends Controller
         User::whereId($id)->update($data);
         $request->session()->flash('success', __('messages.updated', ['name' => 'user']));
 
-        return redirect(route('backend.users.index'));
+        return redirect(route('users.index'));
     }
 
     public function destroy(User $user, Request $request)
@@ -84,7 +69,7 @@ class UserController extends Controller
         $user->delete();
         $request->session()->flash('success', __('messages.deleted', ['name' => 'user']));
 
-        return redirect(route('backend.users.index'));
+        return redirect(route('users.index'));
     }
 
     public function displayChangePasswordForm()
