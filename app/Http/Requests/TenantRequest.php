@@ -22,6 +22,11 @@ class TenantRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+            ],
             'domain' => [
                 'required',
                 'string',

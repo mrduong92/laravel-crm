@@ -16,6 +16,12 @@
                 </div>
             </div>
             <div class="mb-3 row">
+                <label class="col-3 form-label required">Tên</label>
+                <div class="col">
+                    <input type="text" class="form-control" name="name" aria-describedby="name" placeholder="Enter name" value="{{ old('name', $name) }}">
+                </div>
+            </div>
+            <div class="mb-3 row">
                 <label class="col-3 form-label required">Domain</label>
                 <div class="col">
                     <input type="text" class="form-control" name="domain" aria-describedby="domain" placeholder="Enter Domain" value="{{ old('domain', $domain) }}">
