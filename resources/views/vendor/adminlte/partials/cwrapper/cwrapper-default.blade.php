@@ -27,6 +27,8 @@
     {{-- Main Content --}}
     <div class="content">
         <div class="{{ config('adminlte.classes_content') ?: $def_container_class }}">
+            {{-- Flash messages --}}
+            <x-flash-message/>
             @if (isset($slot))
                 <div id="wirechat" class="h-[calc(100vh)]">
                     {{ $slot }}

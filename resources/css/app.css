@@ -20,6 +20,10 @@ table.table.dataTable, div.dt-buttons {
     margin-bottom: 10px !important;
 }
 
+.content-wrapper>.content {
+    padding: 1rem;
+}
+
 #wirechat main p {
     margin: 0;
 }

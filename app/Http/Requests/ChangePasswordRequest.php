@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserRequest extends FormRequest
+class ChangePasswordRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,16 +22,14 @@ class UserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => [
+            'password' => [
                 'required',
-                'max:255',
+                'min:8',
             ],
-            'email' => [
+            'password_confirmation' => [
                 'required',
-                'email',
-                'max:255',
-                'unique:users,email,' . $this->route('user')
-            ]
+                'same:password',
+            ],
         ];
     }
 }

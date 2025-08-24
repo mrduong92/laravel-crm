@@ -22,13 +22,14 @@
                     <input type="text" class="form-control" name="email" aria-describedby="email" placeholder="Enter email" value="{{ old('email', $user->email) }}">
                 </div>
             </div>
-
-            <div class="mb-3 row">
-                <label class="col-3 form-label required">Password</label>
-                <div class="col">
-                    <input type="password" class="form-control" name="password" aria-describedby="password" placeholder="Enter password">
+            @if ($user->id !== Auth::id())
+                <div class="mb-3 row">
+                    <label class="col-3 form-label required">Password</label>
+                    <div class="col">
+                        <input type="password" class="form-control" name="password" aria-describedby="password" placeholder="Enter password">
+                    </div>
                 </div>
-            </div>
+            @endif
         </div>
         <div class="card-footer text-end">
             <a class="btn btn-default" href="{{ url()->previous() }}">Back</a>
