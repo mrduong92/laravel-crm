@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\HomeController as BackendHomeController;
 use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\TenantController;
 
 foreach (config('tenancy.central_domains') as $domain) {
     Route::domain($domain)
@@ -20,6 +21,7 @@ foreach (config('tenancy.central_domains') as $domain) {
         })->name('users.profile');
         Route::put('auth/password', [AuthController::class, 'changePassword'])->name('users.change-password');
         Route::resource('users', UserController::class);
+        Route::resource('tenants', TenantController::class);
         // User
     });
 }

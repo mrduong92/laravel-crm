@@ -19,8 +19,12 @@ class EventServiceProvider extends ServiceProvider
             // Add some items to the menu...
             $event->menu->add('CÀI ĐẶT USER');
             $event->menu->add([
-                'text' => 'Danh sách user',
+                'text' => 'Quản lý user',
                 'url' => '/users',
+            ]);
+            $event->menu->add([
+                'text' => 'Quản lý tenant',
+                'url' => '/tenants',
             ]);
         });
     }

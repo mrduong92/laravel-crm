@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\User;
+use App\Models\Tenant;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -10,19 +10,19 @@ use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 
-class UsersDataTable extends DataTable
+class TenantsDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
      *
-     * @param QueryBuilder<User> $query Results from query() method.
+     * @param QueryBuilder<Tenant> $query Results from query() method.
      */
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function($row){
-                $editUrl = route('users.edit', $row->id);
-                $deleteUrl = route('users.destroy', $row->id);
+                $editUrl = route('tenants.edit', $row->id);
+                $deleteUrl = route('tenants.destroy', $row->id);
                 return '
                     <a href="'.$editUrl.'" class="btn btn-sm btn-warning">
                         <i class="fas fa-edit"></i> Edit
@@ -43,9 +43,9 @@ class UsersDataTable extends DataTable
     /**
      * Get the query source of dataTable.
      *
-     * @return QueryBuilder<User>
+     * @return QueryBuilder<Tenant>
      */
-    public function query(User $model): QueryBuilder
+    public function query(Tenant $model): QueryBuilder
     {
         return $model->newQuery();
     }
@@ -56,18 +56,18 @@ class UsersDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('users')
+            ->setTableId('tenants')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->orderBy(0, 'desc')
             ->selectStyleSingle()
             ->dom('Bfrtip')   // 👈 thêm dòng này
             ->buttons([
-                // Custom nút Add
+                // Custom nút Add'
                 Button::raw([
-                    'text' => '<i class="fas fa-plus"></i> Thêm User',
+                    'text' => '<i class="fas fa-plus"></i> Thêm tenant',
                     'className' => 'btn btn-success',
-                    'action' => 'function() { window.location.href = "/users/create"; }'
+                    'action' => 'function() { window.location.href = "/tenants/create"; }'
                 ]),
             ]);
     }
@@ -79,8 +79,6 @@ class UsersDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('name'),
-            Column::make('email'),
             Column::make('created_at'),
             Column::make('updated_at'),
             Column::computed('action')
@@ -95,6 +93,6 @@ class UsersDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Users_' . date('YmdHis');
+        return 'Tenants_' . date('YmdHis');
     }
 }
