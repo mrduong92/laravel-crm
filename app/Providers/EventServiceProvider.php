@@ -17,15 +17,25 @@ class EventServiceProvider extends ServiceProvider
     {
         Event::listen(BuildingMenu::class, function (BuildingMenu $event) {
             // Add some items to the menu...
-            $event->menu->add('CÀI ĐẶT USER');
-            $event->menu->add([
-                'text' => 'Quản lý user',
-                'url' => '/users',
-            ]);
-            $event->menu->add([
-                'text' => 'Quản lý tenant',
-                'url' => '/tenants',
-            ]);
+            if (tenant('id') === null) {
+                $event->menu->add('CÀI ĐẶT USER');
+                $event->menu->add([
+                    'text' => 'Quản lý user',
+                    'url' => '/users',
+                ]);
+                $event->menu->add([
+                    'text' => 'Quản lý tenant',
+                    'url' => '/tenants',
+                ]);
+            }
+
+            if (auth()->guard('owner')->check()) {
+                $event->menu->add('CÀI ĐẶT ADMIN');
+                $event->menu->add([
+                    'text' => 'Quản lý admin',
+                    'url' => '/users/admin',
+                ]);
+            }
         });
     }
 }

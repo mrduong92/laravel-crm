@@ -15,6 +15,7 @@ use Livewire\Features\SupportFileUploads\FilePreviewController;
 use Livewire\Features\SupportFileUploads\FileUploadController;
 use Illuminate\Support\Facades\Broadcast;
 use App\Http\Controllers\Owner\AuthController;
+use App\Http\Controllers\Tenant\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +57,32 @@ Route::middleware([
             Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
             Route::post('logout', [AuthController::class, 'logout'])->name('logout');
         });
+    });
+
+    Route::middleware('auth:owner')->group(function () {
+        Route::get('auth/password', [AuthController::class, 'displayChangePasswordForm'])->name('users.password');
+        Route::get('auth/profile', function () {
+            return redirect()->route('users.edit', ['user' => Auth::id()]);
+        })->name('users.profile');
+        Route::put('auth/password', [AuthController::class, 'changePassword'])->name('users.change-password');
+
+        Route::get('users/{role}', [UserController::class, 'index'])
+            ->where(['role' => 'admin|user'])
+            ->name('users.index');
+        Route::get('users/{role}/create', [UserController::class, 'create'])
+            ->where(['role' => 'admin|user'])
+            ->name('users.create');
+        Route::post('users/{role}', [UserController::class, 'store'])
+            ->where(['role' => 'admin|user'])
+            ->name('users.store');
+        Route::get('users/{user}', [UserController::class, 'show'])
+            ->name('users.show');
+        Route::get('users/{user}/edit', [UserController::class, 'edit'])
+            ->name('users.edit');
+        Route::put('users/{user}', [UserController::class, 'update'])
+            ->name('users.update');
+        Route::delete('users/{user}', [UserController::class, 'destroy'])
+            ->name('users.destroy');
     });
 
     Route::middleware('auth:web')->group(function () {

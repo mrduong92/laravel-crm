@@ -19,6 +19,6 @@ class AuthController extends Controller
 
         $request->session()->flash('success', __('backend.updated', ['name' => 'user']));
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.password');
     }
 }

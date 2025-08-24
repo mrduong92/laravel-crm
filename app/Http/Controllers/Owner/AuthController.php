@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Owner;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Http\Requests\ChangePasswordRequest;
 
 class AuthController extends Controller
 {
@@ -50,5 +51,20 @@ class AuthController extends Controller
     public function dashboard()
     {
         return view('owner.dashboard');
+    }
+
+    public function displayChangePasswordForm()
+    {
+        return view('tenant.users.password');
+    }
+
+    public function changePassword(ChangePasswordRequest $request)
+    {
+        $this->guard()->user()->password = $request->password;
+        $this->guard()->user()->save();
+
+        $request->session()->flash('success', __('tenant.updated', ['name' => 'user']));
+
+        return redirect()->route('users.password');
     }
 }
