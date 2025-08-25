@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\TenantRequest;
 use App\Models\Tenant;
-use App\Models\Owner;
+use App\Models\User;
 use App\DataTables\TenantsDataTable;
 
 class TenantController extends Controller
@@ -32,12 +32,13 @@ class TenantController extends Controller
 
         $tenant = Tenant::create(['id' => $data['id']]);
         $tenant->domains()->create(['domain' => $data['domain']]);
-        // Create a default owner for the tenant
+        // Create a default User for the tenant
         $tenant->run(function () use ($data) {
-            Owner::create([
-                'name' => $data['name'] ?? 'Owner',
-                'tenant_id' => $data['id'],
+            User::create([
+                'name' => $data['name'] ?? 'User',
+                'username' => $data['id'],
                 'password' => bcrypt('password'),
+                'role' => 'owner',
             ]);
         });
         // TODO: Send mail or notification
@@ -52,7 +53,7 @@ class TenantController extends Controller
         $domain = $tenant->domains->first();
         $name = $tenant->run(
             function () use ($tenant) {
-                return Owner::where('tenant_id', $tenant->id)->first();
+                return User::where('tenant_id', $tenant->id)->first();
             }
         );
         return view('backend.tenants.edit', compact('tenant', 'domain', 'name'));
@@ -66,12 +67,20 @@ class TenantController extends Controller
         ]);
         $domain = $tenant->domains->first();
         $domain->update(['domain' => $data['domain']]);
-        // Update the default owner for the tenant
+        // Update the default User for the tenant
         $tenant->run(function () use ($tenant, $data) {
-            Owner::where('tenant_id', $tenant->id)->update([
-                'name' => $data['name'] ?? 'Owner',
-                'password' => bcrypt('password'),
-            ]);
+            User::updateOrCreate(
+                [
+                    'tenant_id' => $tenant->id,
+                    'role' => 'owner',
+                ],
+                [
+                    'name' => $data['name'] ?? 'User',
+                    'username' => $tenant->id,
+                    'password' => bcrypt('password'),
+                    'role' => 'owner',
+                ]
+            );
         });
         $request->session()->flash('success', __('backend.updated', ['name' => 'tenant']));
 

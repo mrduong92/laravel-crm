@@ -14,7 +14,7 @@ foreach (config('tenancy.central_domains') as $domain) {
         ])
         ->group(function () {
         Auth::routes();
-        Route::get('/', [BackendHomeController::class, 'index'])->name('dashboard');
+        Route::get('/', [BackendHomeController::class, 'index'])->name('home');
         Route::get('auth/password', [AuthController::class, 'displayChangePasswordForm'])->name('users.password');
         Route::get('auth/profile', function () {
             return redirect()->route('users.edit', ['user' => Auth::id()]);

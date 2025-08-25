@@ -26,12 +26,11 @@ class UserRequest extends FormRequest
                 'required',
                 'max:255',
             ],
-            'email' => [
+            'username' => [
                 'required',
-                'email',
                 'max:255',
-                'unique:users,email,' . $this->route('user')
-            ]
+                'unique:users,username,' . $this->route('user')
+            ],
         ];
     }
 }

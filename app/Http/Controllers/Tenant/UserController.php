@@ -13,7 +13,7 @@ use App\DataTables\UsersDataTable;
 
 class UserController extends Controller
 {
-    public function index(string $role, UsersDataTable $dataTable)
+    public function index(UsersDataTable $dataTable)
     {
         return $dataTable->render('tenant.users.index');
     }
@@ -27,8 +27,14 @@ class UserController extends Controller
     {
         $data = $request->only([
             'name',
+            'username',
             'email',
+            'phone',
             'password',
+            'external_id',
+            'source',
+            'role',
+            'status',
         ]);
 
         User::create($data);
@@ -39,18 +45,27 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        return view('backend.users.edit', compact('user'));
+        return view('tenant.users.edit', compact('user'));
     }
 
     public function update($id, UserRequest $request)
     {
         $data = $request->only([
             'name',
+            'username',
             'email',
+            'phone',
+            'password',
+            'external_id',
+            'source',
+            'role',
+            'status',
         ]);
 
-        if (!empty($data['password'])) {
+        if (empty($data['password'])) {
             unset($data['password']);
+        } else {
+            $data['password'] = bcrypt($data['password']);
         }
 
         User::whereId($id)->update($data);
