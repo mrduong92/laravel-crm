@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header">Danh sách Users</div>
+        <div class="card-header">Danh sách {{ $targetRole }}</div>
         <div class="card-body">
             {{ $dataTable->table() }}
         </div>

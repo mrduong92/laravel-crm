@@ -119,9 +119,8 @@ class TenancyServiceProvider extends ServiceProvider
         }
         Event::listen(BuildingMenu::class, function (BuildingMenu $event) {
             if (tenant()) {
-                $event->menu->add('Chat');
                 $event->menu->add([
-                    'text' => 'Chat',
+                    'text' => 'Hội thoại',
                     'url' => 'chats',
                 ]);
             }

@@ -20,7 +20,9 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
+        'phone',
         'password',
         'external_id',
         'source',
@@ -65,5 +67,15 @@ class User extends Authenticatable
     public function isSales()
     {
         return $this->role === 'sales';
+    }
+
+    public function getTargetRole()
+    {
+        return match ($this->role) {
+            'owner' => 'admin',
+            'admin' => 'sales',
+            'sales' => null,
+            default => null,
+        };
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Livewire\Chats;
 
 use Livewire\Component;
+use Namu\WireChat\Models\Conversation;
 use Namu\WireChat\Livewire\Chats\Chats as BaseChats;
 use App\Models\User;
 use Namu\WireChat\Facades\WireChat;
@@ -20,7 +21,29 @@ class Chats extends BaseChats
         $perPage = 10;
         $offset = ($this->page - 1) * $perPage;
 
-        $additionalConversations = $user->conversations()
+        // Determine conversations to fetch based on user role
+        $role = $user->role; // assuming 'role' is a column on User model
+
+        if ($role === 'owner') {
+            // Owner: get conversations of admin and sales
+            $adminIds = User::where('role', 'admin')->pluck('id');
+            $salesIds = User::where('role', 'sales')->pluck('id');
+            $userIds = $adminIds->merge($salesIds)->unique();
+        } elseif ($role === 'admin') {
+            // Admin: get conversations of sales of this admin
+            $salesIds = User::where('role', 'sales')->where('created_by', $user->id)->pluck('id');
+            $userIds = $salesIds;
+        } elseif ($role === 'sales') {
+            // Sales: get conversations of this sales only
+            $userIds = collect([$user->id]);
+        } else {
+            // Default: only this user
+            $userIds = collect([$user->id]);
+        }
+
+        $additionalConversations = Conversation::whereHas('participants', function ($query) use ($userIds) {
+                $query->whereIn('participantable_id', $userIds);
+            })
             ->with([
                 'lastMessage.sendable',
                 'group.cover' => fn($query) => $query->select('id', 'url', 'attachable_type', 'attachable_id', 'file_path'),

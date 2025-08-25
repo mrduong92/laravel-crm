@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/chats';
 
     /**
      * Create a new controller instance.
@@ -38,4 +38,28 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
         $this->middleware('auth')->only('logout');
     }
+
+    /**
+     * Get the login username to be used by the controller.
+     *
+     * @return string
+     */
+    public function username()
+    {
+        return 'username';
+    }
+
+    /**
+     * Get the post register / login redirect path.
+     *
+     * @return string
+     */
+    // public function redirectTo()
+    // {
+    //     if (in_array(request()->getHost(), config('tenancy.central_domains'))) {
+    //         return redirect()->route('dashboard');
+    //     }
+
+    //     return redirect()->route('home');
+    // }
 }

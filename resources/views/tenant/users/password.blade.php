@@ -6,7 +6,7 @@
         @method('PUT')
         @csrf
         <div class="card-header">
-            <h3 class="card-title">Đổi mật khẩu {{ auth('owner')->user()->name }}</h3>
+            <h3 class="card-title">Đổi mật khẩu {{ auth()->user()->username }}</h3>
         </div>
         <div class="card-body">
             <div class="mb-3 row">

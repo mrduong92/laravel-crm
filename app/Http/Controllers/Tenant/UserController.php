@@ -13,23 +13,33 @@ use App\DataTables\UsersDataTable;
 
 class UserController extends Controller
 {
-    public function index(string $role, UsersDataTable $dataTable)
+    public function index(UsersDataTable $dataTable)
     {
-        return $dataTable->render('tenant.users.index');
+        $targetRole = auth()->user()->getTargetRole();
+        return $dataTable->render('tenant.users.index', compact('targetRole'));
     }
 
     public function create()
     {
-        return view('tenant.users.create');
+        $targetRole = auth()->user()->getTargetRole();
+
+        return view('tenant.users.create', compact('targetRole'));
     }
 
     public function store(UserRequest $request)
     {
         $data = $request->only([
             'name',
+            'username',
             'email',
+            'phone',
             'password',
+            'external_id',
+            'source',
+            'status',
         ]);
+        $data['role'] = auth()->user()->getTargetRole();
+        $data['created_by'] = auth()->id();
 
         User::create($data);
         $request->session()->flash('success', __('tenant.created', ['name' => 'user']));
@@ -39,18 +49,27 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        return view('backend.users.edit', compact('user'));
+        return view('tenant.users.edit', compact('user'));
     }
 
     public function update($id, UserRequest $request)
     {
         $data = $request->only([
             'name',
+            'username',
             'email',
+            'phone',
+            'password',
+            'external_id',
+            'source',
+            'role',
+            'status',
         ]);
 
-        if (!empty($data['password'])) {
+        if (empty($data['password'])) {
             unset($data['password']);
+        } else {
+            $data['password'] = bcrypt($data['password']);
         }
 
         User::whereId($id)->update($data);

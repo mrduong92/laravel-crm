@@ -49,7 +49,16 @@ class UsersDataTable extends DataTable
      */
     public function query(User $model): QueryBuilder
     {
-        return $model->newQuery();
+        $query = $model->newQuery();
+
+        $authUser = auth()->user();
+        if ($authUser && $authUser->role === 'owner') {
+            $query->whereIn('role', ['admin']);
+        } else if ($authUser && $authUser->role === 'admin') {
+            $query->whereIn('role', ['sales']);
+        }
+
+        return $query;
     }
 
     /**
@@ -67,7 +76,7 @@ class UsersDataTable extends DataTable
             ->buttons([
                 // Custom nút Add
                 Button::raw([
-                    'text' => '<i class="fas fa-plus"></i> Thêm User',
+                    'text' => '<i class="fas fa-plus"></i> Thêm',
                     'className' => 'btn btn-success',
                     'action' => 'function() { window.location.href = "/users/create"; }'
                 ]),
@@ -82,7 +91,8 @@ class UsersDataTable extends DataTable
         return [
             Column::make('id'),
             Column::make('name'),
-            Column::make('email'),
+            Column::make('username'),
+            Column::make('role'),
             Column::make('created_at'),
             Column::make('updated_at'),
             Column::computed('action')

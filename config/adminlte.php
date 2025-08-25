@@ -318,12 +318,12 @@ return [
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
-            'url' => 'auth/profile',
+            'url' => 'profile',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
             'text' => 'change_password',
-            'url' => 'auth/password',
+            'url' => 'password/change',
             'icon' => 'fas fa-fw fa-lock',
         ],
     ],
