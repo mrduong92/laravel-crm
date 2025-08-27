@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\Knownledge;
+use App\Models\Knowledge;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -10,7 +10,7 @@ use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 
-class KnownledgesDataTable extends DataTable
+class KnowledgesDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -21,8 +21,8 @@ class KnownledgesDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function($row){
-                $editUrl = route('knownledges.edit', $row->id);
-                $deleteUrl = route('knownledges.destroy', $row->id);
+                $editUrl = route('knowledges.edit', $row->id);
+                $deleteUrl = route('knowledges.destroy', $row->id);
                 return '
                     <a href="'.$editUrl.'" class="btn btn-sm btn-warning">
                         <i class="fas fa-edit"></i> Edit
@@ -45,7 +45,7 @@ class KnownledgesDataTable extends DataTable
      *
      * @return QueryBuilder<Tenant>
      */
-    public function query(Knownledge $model): QueryBuilder
+    public function query(Knowledge $model): QueryBuilder
     {
         return $model->newQuery();
     }
@@ -56,7 +56,7 @@ class KnownledgesDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('knownledges')
+            ->setTableId('knowledges')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->orderBy(0, 'desc')
@@ -67,12 +67,12 @@ class KnownledgesDataTable extends DataTable
                 Button::raw([
                     'text' => '<i class="fas fa-plus"></i> Thêm văn bản',
                     'className' => 'btn btn-success',
-                    'action' => 'function() { window.location.href = "/knownledges/create/text"; }'
+                    'action' => 'function() { window.location.href = "/knowledges/create/text"; }'
                 ]),
                 Button::raw([
                     'text' => '<i class="fas fa-plus"></i> Thêm file',
                     'className' => 'btn btn-info',
-                    'action' => 'function() { window.location.href = "/knownledges/create/file"; }'
+                    'action' => 'function() { window.location.href = "/knowledges/create/file"; }'
                 ]),
             ]);
     }
@@ -98,6 +98,6 @@ class KnownledgesDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'knownledges_' . date('YmdHis');
+        return 'knowledges_' . date('YmdHis');
     }
 }

@@ -13,7 +13,7 @@ class EventServiceProvider extends ServiceProvider
             App\Listeners\MediaLogger::class
         ],
     ];
-    
+
     /**
      * Register any events for your application.
      *
@@ -26,7 +26,7 @@ class EventServiceProvider extends ServiceProvider
                 if (auth()->user()->role !== 'sales') {
                     $event->menu->add([
                         'text' => 'Quản lý kiến thức',
-                        'url' => '/knownledges',
+                        'url' => '/knowledges',
                     ]);
                     $event->menu->add([
                         'text' => 'Quản lý user',

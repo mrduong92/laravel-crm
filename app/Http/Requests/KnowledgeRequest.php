@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class KnownledgeRequest extends FormRequest
+class KnowledgeRequest extends FormRequest
 {
     public function authorize(): bool
     {
         return true;
     }
 
-public function rules(): array
+    public function rules(): array
     {
         $type = $this->route('type', 'text');
         dd($type);

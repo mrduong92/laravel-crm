@@ -4,12 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Knownledge extends AppModel
+class Knowledge extends AppModel
 {
+    protected $table = 'knowledges';
+    
     protected $fillable = [
         'type',
         'title',
         'content',
-        'file'
+        'media_id'
     ];
 }

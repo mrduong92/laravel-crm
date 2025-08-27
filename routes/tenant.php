@@ -16,7 +16,7 @@ use Livewire\Features\SupportFileUploads\FileUploadController;
 use Illuminate\Support\Facades\Broadcast;
 use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\Tenant\UserController;
-use App\Http\Controllers\Tenant\KnownledgeController;
+use App\Http\Controllers\Tenant\KnowledgeController;
 use LivewireFilemanager\Filemanager\Http\Controllers\Files\FileController;
 
 /*
@@ -52,9 +52,9 @@ Route::middleware([
         Route::put('password/change', [ChangePasswordController::class, 'changePassword'])->name('password.update');
 
         Route::resource('users', UserController::class);
-        Route::resource('knownledges', KnownledgeController::class);
-        Route::get('knownledges/create/{type}', [KnownledgeController::class, 'create'])->name('knownledges.create');
-        Route::put('knownledges/store/{type}', [KnownledgeController::class, 'store'])->name('knownledges.store');
+        Route::resource('knowledges', KnowledgeController::class);
+        Route::get('knowledges/create/{type}', [KnowledgeController::class, 'create'])->name('knowledges.create');
+        Route::put('knowledges/store/{type}', [KnowledgeController::class, 'store'])->name('knowledges.store');
 
         Route::get('/', [HomeController::class, 'index'])->name('home');
         Route::middleware(config('wirechat.routes.middleware'))
