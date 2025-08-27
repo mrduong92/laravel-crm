@@ -54,7 +54,6 @@ Route::middleware([
         Route::resource('users', UserController::class);
         Route::resource('knowledges', KnowledgeController::class);
         Route::get('knowledges/create/{type}', [KnowledgeController::class, 'create'])->name('knowledges.create');
-        Route::put('knowledges/store/{type}', [KnowledgeController::class, 'store'])->name('knowledges.store');
 
         Route::get('/', [HomeController::class, 'index'])->name('home');
         Route::middleware(config('wirechat.routes.middleware'))
