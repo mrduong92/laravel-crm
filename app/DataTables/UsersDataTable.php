@@ -88,11 +88,25 @@ class UsersDataTable extends DataTable
      */
     public function getColumns(): array
     {
+        if (tenant()) {
+            return [
+                Column::make('id'),
+                Column::make('name'),
+                Column::make('username'),
+                Column::make('role'),
+                Column::make('created_at'),
+                Column::make('updated_at'),
+                Column::computed('action')
+                    ->exportable(false)
+                    ->printable(false)
+                    ->addClass('text-center'),
+            ];
+        }
+
         return [
             Column::make('id'),
             Column::make('name'),
             Column::make('username'),
-            Column::make('role'),
             Column::make('created_at'),
             Column::make('updated_at'),
             Column::computed('action')

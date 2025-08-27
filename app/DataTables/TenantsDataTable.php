@@ -65,7 +65,7 @@ class TenantsDataTable extends DataTable
             ->buttons([
                 // Custom nút Add'
                 Button::raw([
-                    'text' => '<i class="fas fa-plus"></i> Thêm tenant',
+                    'text' => '<i class="fas fa-plus"></i> Thêm',
                     'className' => 'btn btn-success',
                     'action' => 'function() { window.location.href = "/tenants/create"; }'
                 ]),

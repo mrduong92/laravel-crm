@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('external_id')->nullable()->after('tenant_id'); // Add external_id column for user identification
+            $table->string('external_id')->nullable()->after('password'); // Add external_id column for user identification
             $table->string('source')->after('external_id')->nullable()->comment('source of the user, e.g., normal, zalo_oa, zalo_user, facebook, tiktok.');
             $table->string('phone')->nullable()->after('email')->comment('Phone number of the user.');
             $table->string('role')->default('sales')->after('phone')->comment('Role of the user, e.g., owner, admin, sales.');

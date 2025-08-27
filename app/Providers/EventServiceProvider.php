@@ -8,6 +8,12 @@ use JeroenNoten\LaravelAdminLte\Events\BuildingMenu;
 
 class EventServiceProvider extends ServiceProvider
 {
+    protected $listen = [
+        Spatie\MediaLibrary\MediaCollections\Events\MediaHasBeenAddedEvent::class => [
+            App\Listeners\MediaLogger::class
+        ],
+    ];
+    
     /**
      * Register any events for your application.
      *
@@ -18,7 +24,10 @@ class EventServiceProvider extends ServiceProvider
         Event::listen(BuildingMenu::class, function (BuildingMenu $event) {
             if (tenant()) {
                 if (auth()->user()->role !== 'sales') {
-                    $event->menu->add('CÀI ĐẶT USER');
+                    $event->menu->add([
+                        'text' => 'Quản lý kiến thức',
+                        'url' => '/knownledges',
+                    ]);
                     $event->menu->add([
                         'text' => 'Quản lý user',
                         'url' => '/users',

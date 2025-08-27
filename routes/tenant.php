@@ -16,6 +16,8 @@ use Livewire\Features\SupportFileUploads\FileUploadController;
 use Illuminate\Support\Facades\Broadcast;
 use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\Tenant\UserController;
+use App\Http\Controllers\Tenant\KnownledgeController;
+use LivewireFilemanager\Filemanager\Http\Controllers\Files\FileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +52,9 @@ Route::middleware([
         Route::put('password/change', [ChangePasswordController::class, 'changePassword'])->name('password.update');
 
         Route::resource('users', UserController::class);
+        Route::resource('knownledges', KnownledgeController::class);
+        Route::get('knownledges/create/{type}', [KnownledgeController::class, 'create'])->name('knownledges.create');
+        Route::put('knownledges/store/{type}', [KnownledgeController::class, 'store'])->name('knownledges.store');
 
         Route::get('/', [HomeController::class, 'index'])->name('home');
         Route::middleware(config('wirechat.routes.middleware'))
@@ -58,11 +63,14 @@ Route::middleware([
             Route::get('/', Chats::class)->name('chats');
             Route::get('/{conversation}', Chat::class)->middleware('belongsToConversation')->name('chat');
         });
+        // Livewire routes
+        Route::get('livewire/livewire.js', [FrontendAssets::class, 'returnJavaScriptAsFile']);
+        Route::get('livewire/livewire.min.js.map', [FrontendAssets::class, 'maps']);
+        Route::get('livewire/preview-file/{filename}', [FilePreviewController::class, 'handle'])->name('livewire.preview-file');
+        Route::post('livewire/update', [HandleRequests::class, 'handleUpdate'])->name('livewire.update');
+        Route::post('livewire/upload-file', [FileUploadController::class, 'handle'])->name('livewire.upload-file');
     });
-    // Livewire routes
-    Route::get('livewire/livewire.js', [FrontendAssets::class, 'returnJavaScriptAsFile']);
-    Route::get('livewire/livewire.min.js.map', [FrontendAssets::class, 'maps']);
-    Route::get('livewire/preview-file/{filename}', [FilePreviewController::class, 'handle'])->name('livewire.preview-file');
-    Route::post('livewire/update', [HandleRequests::class, 'handleUpdate'])->name('livewire.update');
-    Route::post('livewire/upload-file', [FileUploadController::class, 'handle'])->name('livewire.upload-file');
 });
+
+
+Route::get('{path}', [FileController::class, 'show'])->where('path', '.*')->name('assets.show');

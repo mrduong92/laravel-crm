@@ -19,6 +19,8 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.10.1",
         "laravel/ui": "^4.6",
+        "league/flysystem-aws-s3-v3": "^3.0",
+        "livewire-filemanager/filemanager": "^0.1.46",
         "namu/wirechat": "^0.2.10",
         "predis/predis": "^3.2",
         "stancl/tenancy": "^3.9",

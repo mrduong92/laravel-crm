@@ -16,9 +16,9 @@ services:
       - ${REVERB_PORT}:8080
     expose:
       - 80
-
     depends_on:
       - app
+
   app:
     container_name: app
     restart: always
@@ -37,6 +37,8 @@ services:
       - 8080
     links:
       - mysql
+      - qdrant   # 🔹 app có thể gọi sang qdrant
+
   mysql:
     container_name: mysql
     image: mysql:${DB_VERSION}
@@ -54,12 +56,14 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_ROOT_HOST: '%'
+
   redis:
     container_name: redis
     image: redis:latest
     restart: always
     volumes:
       - ${DATA_PATH_HOST}/redis:/data
+
   node:
     container_name: node
     build:
@@ -78,3 +82,14 @@ services:
       - app
     links:
       - mysql
+      - qdrant   # 🔹 node app cũng có thể gọi qdrant
+
+  qdrant:
+    container_name: qdrant
+    image: qdrant/qdrant:latest
+    restart: always
+    ports:
+      - "6333:6333"   # REST API
+      - "6334:6334"   # gRPC
+    volumes:
+      - ${DATA_PATH_HOST}/qdrant:/qdrant/storage

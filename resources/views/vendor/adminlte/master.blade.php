@@ -64,6 +64,7 @@
         @endif
     @endif
     @wirechatStyles
+    @filemanagerStyles
 
     <style>
         :root {
@@ -147,6 +148,7 @@
         @endif
     @endif
     @wirechatAssets
+    @filemanagerScripts
 
     {{-- Custom Scripts --}}
     @yield('adminlte_js')

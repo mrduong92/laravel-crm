@@ -71,7 +71,7 @@ class TenantController extends Controller
         $tenant->run(function () use ($tenant, $data) {
             User::updateOrCreate(
                 [
-                    'tenant_id' => $tenant->id,
+                    'username' => $tenant->id,
                     'role' => 'owner',
                 ],
                 [
