@@ -91,5 +91,6 @@ services:
     ports:
       - "6333:6333"   # REST API
       - "6334:6334"   # gRPC
+      - "6335:6335"   # Dashboard
     volumes:
       - ${DATA_PATH_HOST}/qdrant:/qdrant/storage

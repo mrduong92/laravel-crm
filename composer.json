@@ -22,6 +22,7 @@
         "league/flysystem-aws-s3-v3": "^3.0",
         "livewire-filemanager/filemanager": "^0.1.46",
         "namu/wirechat": "^0.2.10",
+        "openai-php/client": "^0.16.0",
         "predis/predis": "^3.2",
         "stancl/tenancy": "^3.9",
         "yajra/laravel-datatables": "^12.0",

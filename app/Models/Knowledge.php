@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Knowledge extends AppModel
 {
-    protected $table = 'knowledges';
-    
     protected $fillable = [
         'type',
         'title',

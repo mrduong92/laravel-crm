@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers\Tenant;
 
+use App\DataTables\KnowledgesDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Knowledge;
 use App\Http\Requests\KnowledgeRequest;
-use Illuminate\Http\Request;
-use App\DataTables\KnowledgesDataTable;
+use App\Services\IngestService;
 
 class KnowledgeController extends Controller
 {
+    private $ingestService;
+
+    public function __construct(IngestService $ingestService)
+    {
+        $this->ingestService = $ingestService;
+    }
+
     public function index(KnowledgesDataTable $dataTable)
     {
         return $dataTable->render('tenant.knowledges.index');
@@ -23,7 +30,9 @@ class KnowledgeController extends Controller
     public function store(KnowledgeRequest $request)
     {
         $data = $request->validated();
-        Knowledge::create($data);
+        $knowledge = Knowledge::create($data);
+
+        $this->ingestService->ingestKnowledgeChunksToQdrant($knowledge);
 
         return redirect()->route('knowledges.index')->with('success', 'Tạo mới thành công');
     }
@@ -37,6 +46,8 @@ class KnowledgeController extends Controller
     {
         $data = $request->validated();
         $knowledge->update($data);
+
+        $this->ingestService->ingestKnowledgeChunksToQdrant($knowledge);
 
         return redirect()->route('knowledges.index')->with('success', 'Cập nhật thành công');
     }
