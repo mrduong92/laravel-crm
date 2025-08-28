@@ -24,7 +24,7 @@ return [
         'middleware' => ['api', 'auth:sanctum'],
         'rate_limit' => '100,1',
         'max_file_size' => 10240,
-        'allowed_extensions' => ['jpg', 'jpeg', 'png', 'gif', 'pdf', 'doc', 'docx', 'txt', 'zip'],
+        'allowed_extensions' => ['pdf', 'docx', 'xlsx', 'txt', 'csv'],
         'chunk_size' => 1048576,
     ],
 

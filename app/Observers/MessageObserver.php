@@ -22,7 +22,7 @@ class MessageObserver
         ]);
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
-        ])->post(config('app.zalo.api_url') . '/send-message', [
+        ])->post(config('services.zalo.api_url') . '/send-message', [
             'messageId' => $message->id,
             'senderId' => $message['sendable_id'],
             'content' => $message['body'] ?? 'Nội dung tin nhắn',

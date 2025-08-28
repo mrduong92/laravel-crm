@@ -35,4 +35,16 @@ return [
         ],
     ],
 
+    'zalo' => [
+        'api_url' => env('ZALO_USER_API_URL', 'http://localhost:3000'),
+    ],
+
+    'qdrant' => [
+        'api_url' => env('QDRANT_API_URL', 'http://qdrant:6333'),
+    ],
+
+    'openai' => [
+        'api_key' => env('OPENAI_API_KEY'),
+    ]
+
 ];

@@ -32,7 +32,7 @@ class KnowledgeController extends Controller
         $data = $request->validated();
         $knowledge = Knowledge::create($data);
 
-        $this->ingestService->ingestKnowledgeChunksToQdrant($knowledge);
+        $this->ingestService->ingestText($knowledge);
 
         return redirect()->route('knowledges.index')->with('success', 'Tạo mới thành công');
     }
@@ -47,7 +47,7 @@ class KnowledgeController extends Controller
         $data = $request->validated();
         $knowledge->update($data);
 
-        $this->ingestService->ingestKnowledgeChunksToQdrant($knowledge);
+        $this->ingestService->ingestText($knowledge);
 
         return redirect()->route('knowledges.index')->with('success', 'Cập nhật thành công');
     }

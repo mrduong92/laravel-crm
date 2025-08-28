@@ -8,6 +8,9 @@ use App\Http\Requests\TenantRequest;
 use App\Models\Tenant;
 use App\Models\User;
 use App\DataTables\TenantsDataTable;
+use LivewireFilemanager\Filemanager\Models\Folder;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Http;
 
 class TenantController extends Controller
 {
@@ -32,15 +35,34 @@ class TenantController extends Controller
 
         $tenant = Tenant::create(['id' => $data['id']]);
         $tenant->domains()->create(['domain' => $data['domain']]);
-        // Create a default User for the tenant
         $tenant->run(function () use ($data) {
+            // Create a default User for the tenant
             User::create([
                 'name' => $data['name'] ?? 'User',
                 'username' => $data['id'],
                 'password' => bcrypt('password'),
                 'role' => 'owner',
             ]);
+            // Create a default root folder
+            $folder = new Folder;
+            $folder->name = 'root';
+            $folder->slug = Str::slug('root');
+            $folder->parent_id = null;
+            $folder->save();
+            // Create a default collection for Qdrant
+            $qdrantUrl = config('services.qdrant.api_url');
+            $collectionName = 'knowledge_' . tenant('id');
+            Http::withHeaders([
+                'api-key' => config('services.qdrant.api_key'),
+                'Content-Type' => 'application/json',
+            ])->put("$qdrantUrl/collections/$collectionName", [
+                'vectors' => [
+                    'size' => 1536,
+                    'distance' => 'Cosine',
+                ],
+            ]);
         });
+
         // TODO: Send mail or notification
 
         $request->session()->flash('success', __('backend.created', ['name' => 'tenant']));
