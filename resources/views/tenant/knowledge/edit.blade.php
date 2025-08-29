@@ -5,7 +5,7 @@
     @if ($knowledge->type === 'file')
         <x-livewire-filemanager />
     @else
-        <form action="{{ route('knowledges.update', $knowledge) }}" method="post" class="card">
+        <form action="{{ route('knowledge.update', $knowledge) }}" method="post" class="card">
             @method('PUT')
             @csrf
             <div class="card-header">

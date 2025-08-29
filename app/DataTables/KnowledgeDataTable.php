@@ -10,7 +10,7 @@ use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 
-class KnowledgesDataTable extends DataTable
+class KnowledgeDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -21,8 +21,8 @@ class KnowledgesDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function($row){
-                $editUrl = route('knowledges.edit', $row->id);
-                $deleteUrl = route('knowledges.destroy', $row->id);
+                $editUrl = route('knowledge.edit', $row->id);
+                $deleteUrl = route('knowledge.destroy', $row->id);
                 return '
                     <a href="'.$editUrl.'" class="btn btn-sm btn-warning">
                         <i class="fas fa-edit"></i> Edit
@@ -56,7 +56,7 @@ class KnowledgesDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('knowledges')
+            ->setTableId('knowledge')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->orderBy(0, 'desc')
@@ -67,12 +67,12 @@ class KnowledgesDataTable extends DataTable
                 Button::raw([
                     'text' => '<i class="fas fa-plus"></i> Thêm văn bản',
                     'className' => 'btn btn-success',
-                    'action' => 'function() { window.location.href = "/knowledges/create/text"; }'
+                    'action' => 'function() { window.location.href = "/knowledge/create/text"; }'
                 ]),
                 Button::raw([
                     'text' => '<i class="fas fa-plus"></i> Thêm file',
                     'className' => 'btn btn-info',
-                    'action' => 'function() { window.location.href = "/knowledges/create/file"; }'
+                    'action' => 'function() { window.location.href = "/knowledge/create/file"; }'
                 ]),
             ]);
     }
@@ -99,6 +99,6 @@ class KnowledgesDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'knowledges_' . date('YmdHis');
+        return 'knowledge_' . date('YmdHis');
     }
 }

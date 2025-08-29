@@ -5,7 +5,7 @@
     @if ($type === 'file')
         <x-livewire-filemanager />
     @else
-        <form action="{{ route('knowledges.store') }}" method="post" class="card">
+        <form action="{{ route('knowledge.store') }}" method="post" class="card">
             @csrf
             <div class="card-header">
                 <h3 class="card-title">Thêm văn bản</h3>

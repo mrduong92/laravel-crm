@@ -52,8 +52,8 @@ Route::middleware([
         Route::put('password/change', [ChangePasswordController::class, 'changePassword'])->name('password.update');
 
         Route::resource('users', UserController::class);
-        Route::resource('knowledges', KnowledgeController::class);
-        Route::get('knowledges/create/{type}', [KnowledgeController::class, 'create'])->name('knowledges.create');
+        Route::resource('knowledge', KnowledgeController::class);
+        Route::get('knowledge/create/{type}', [KnowledgeController::class, 'create'])->name('knowledge.create');
 
         Route::get('/', [HomeController::class, 'index'])->name('home');
         Route::middleware(config('wirechat.routes.middleware'))

@@ -43,6 +43,10 @@ return [
         'api_url' => env('QDRANT_API_URL', 'http://qdrant:6333'),
     ],
 
+    'flask_ai' => [
+        'api_url' => env('FLASK_AI_API_URL', 'http://localhost:5000'),
+    ],
+
     'openai' => [
         'api_key' => env('OPENAI_API_KEY'),
     ]

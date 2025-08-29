@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Tenant;
 
-use App\DataTables\KnowledgesDataTable;
+use App\DataTables\KnowledgeDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Knowledge;
 use App\Http\Requests\KnowledgeRequest;
@@ -17,14 +17,14 @@ class KnowledgeController extends Controller
         $this->ingestService = $ingestService;
     }
 
-    public function index(KnowledgesDataTable $dataTable)
+    public function index(KnowledgeDataTable $dataTable)
     {
-        return $dataTable->render('tenant.knowledges.index');
+        return $dataTable->render('tenant.knowledge.index');
     }
 
     public function create($type = 'text')
     {
-        return view('tenant.knowledges.create', compact('type'));
+        return view('tenant.knowledge.create', compact('type'));
     }
 
     public function store(KnowledgeRequest $request)
@@ -34,12 +34,12 @@ class KnowledgeController extends Controller
 
         $this->ingestService->ingestText($knowledge);
 
-        return redirect()->route('knowledges.index')->with('success', 'Tạo mới thành công');
+        return redirect()->route('knowledge.index')->with('success', 'Tạo mới thành công');
     }
 
     public function edit(Knowledge $knowledge)
     {
-        return view('tenant.knowledges.edit', compact('knowledge'));
+        return view('tenant.knowledge.edit', compact('knowledge'));
     }
 
     public function update(KnowledgeRequest $request, Knowledge $knowledge)
@@ -49,12 +49,12 @@ class KnowledgeController extends Controller
 
         $this->ingestService->ingestText($knowledge);
 
-        return redirect()->route('knowledges.index')->with('success', 'Cập nhật thành công');
+        return redirect()->route('knowledge.index')->with('success', 'Cập nhật thành công');
     }
 
     public function destroy(Knowledge $knowledge)
     {
         $knowledge->delete();
-        return redirect()->route('knowledges.index')->with('success', 'Xóa thành công');
+        return redirect()->route('knowledge.index')->with('success', 'Xóa thành công');
     }
 }

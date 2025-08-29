@@ -26,7 +26,7 @@ class EventServiceProvider extends ServiceProvider
                 if (auth()->user()->role !== 'sales') {
                     $event->menu->add([
                         'text' => 'Quản lý kiến thức',
-                        'url' => '/knowledges',
+                        'url' => '/knowledge',
                     ]);
                     $event->menu->add([
                         'text' => 'Quản lý user',

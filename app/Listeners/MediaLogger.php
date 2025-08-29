@@ -4,7 +4,7 @@ namespace App\Listeners;
 
 use App\Models\Knowledge;
 use App\Services\IngestService;
-use Log;
+use Illuminate\Support\Facades\Log;
 use Spatie\MediaLibrary\MediaCollections\Events\MediaHasBeenAddedEvent;
 
 class MediaLogger
@@ -21,7 +21,7 @@ class MediaLogger
         $media = $event->media;
         $path = $media->getPath();
         Log::info("file {$path} has been saved for media {$media->id}");
-        // Save to Knowledges table
+        // Save to Knowledge table
         $knowledge = new Knowledge();
         $knowledge->title = $media->name;
         $knowledge->content = $media->name;
@@ -30,6 +30,7 @@ class MediaLogger
         $knowledge->save();
 
         // Gọi ingest sau khi save
-        $this->ingestService->ingestFile($media, $knowledge->id);
+        $response = $this->ingestService->sendIngestRequest($media->getPath());
+        Log::info("Ingest response: " . json_encode($response));
     }
 }
